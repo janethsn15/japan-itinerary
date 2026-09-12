@@ -133,7 +133,7 @@ h1 em { color: var(--red); font-weight: 400; }
 .day-details summary::-webkit-details-marker { display: none; }
 .city-tag { font-size: 9px; font-weight: 800; letter-spacing: .18em; }
 .city-tokyo .city-tag { color: var(--red); }
-.city-nagano .city-tag { color: #a57319; }
+.city-shibu-onsen .city-tag { color: #a57319; }
 .city-kyoto .city-tag { color: #587552; }
 .city-osaka .city-tag { color: #357184; }
 .day-details h3 { margin: 7px 0 7px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(23px, 2.3vw, 33px); font-weight: 500; letter-spacing: -.025em; }

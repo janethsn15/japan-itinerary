@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-type City = "Tokyo" | "Nagano" | "Kyoto" | "Osaka";
+type City = "Tokyo" | "Shibu Onsen" | "Kyoto" | "Osaka";
 
 type Day = {
   id: number;
@@ -52,32 +52,36 @@ const days: Day[] = [
     id: 3,
     date: "11",
     weekday: "FRI",
-    city: "Nagano",
-    japanese: "長野",
-    title: "Into the mountains",
-    summary: "Ride north to Nagano for crisp air, temple lanes, and steaming oyaki.",
+    city: "Shibu Onsen",
+    japanese: "渋温泉",
+    title: "Ryokan life in Shibu Onsen",
+    summary: "Travel through Nagano to a 1,300-year-old hot-spring town and settle into a ryokan.",
     events: [
       { time: "09:00", title: "Shinkansen to Nagano", note: "Tokyo Station → Nagano · about 1 hr 25 min" },
-      { time: "12:00", title: "Drop bags + soba lunch" },
-      { time: "14:00", title: "Zenkō-ji Temple", note: "Explore the old approach and temple grounds" },
+      { time: "11:00", title: "Nagano Dentetsu to Yudanaka", note: "Limited express · about 45 minutes" },
+      { time: "12:00", title: "Bus or taxi to Shibu Onsen", note: "About 5 minutes from Yudanaka Station" },
+      { time: "15:00", title: "Ryokan check-in + onsen walk", note: "Pick up the guest key for Shibu Onsen’s nine public baths" },
+      { time: "18:00", title: "Kaiseki dinner at the ryokan" },
     ],
-    stay: "Nagano · Night 1",
-    transfer: "Tokyo → Nagano",
+    stay: "Shibu Onsen · Ryokan night 1",
+    transfer: "Tokyo → Shibu Onsen",
   },
   {
     id: 4,
     date: "12",
     weekday: "SAT",
-    city: "Nagano",
-    japanese: "長野",
-    title: "Snow monkeys & onsen air",
-    summary: "A winter day among the hot-spring monkeys and mountain villages.",
+    city: "Shibu Onsen",
+    japanese: "渋温泉",
+    title: "Snow monkeys & the nine baths",
+    summary: "Meet Jigokudani’s macaques, then return for an unhurried onsen evening.",
     events: [
-      { time: "08:00", title: "Bus to Jigokudani", note: "Wear warm layers and shoes with grip" },
-      { time: "10:00", title: "Snow Monkey Park", note: "Forest walk is roughly 30 minutes each way" },
-      { time: "15:00", title: "Shibu Onsen stroll", note: "Warm drink or optional day-use bath" },
+      { time: "08:30", title: "Bus to Snow Monkey Park", note: "Use the winter access from the Kanbayashi side" },
+      { time: "09:00", title: "Forest walk to Jigokudani", note: "Roughly 30 minutes each way; wear shoes with grip" },
+      { time: "10:00", title: "Snow Monkey Park" },
+      { time: "14:00", title: "Return to Shibu Onsen", note: "Lunch, stone lanes, and a warm drink" },
+      { time: "16:00", title: "Nine-bath onsen trail", note: "Available to overnight guests until 10:00 PM" },
     ],
-    stay: "Nagano · Night 2",
+    stay: "Shibu Onsen · Ryokan night 2",
   },
   {
     id: 5,
@@ -88,12 +92,13 @@ const days: Day[] = [
     title: "From peaks to lantern-lit lanes",
     summary: "Cross the country to Kyoto and spend the evening wandering Gion.",
     events: [
-      { time: "08:30", title: "Train to Kyoto", note: "Limited express + Shinkansen via Nagoya · about 3 hr 30 min" },
+      { time: "08:00", title: "Return to Nagano Station", note: "Yudanaka → Nagano by limited express" },
+      { time: "09:30", title: "Train to Kyoto", note: "Limited express + Shinkansen via Nagoya · allow about 4 hr 30 min total" },
       { time: "13:00", title: "Check in + Nishiki Market" },
       { time: "17:00", title: "Gion & Yasaka Shrine", note: "Continue to Ponto-chō for dinner" },
     ],
     stay: "Kyoto · Night 1",
-    transfer: "Nagano → Kyoto",
+    transfer: "Shibu Onsen → Kyoto",
   },
   {
     id: 6,
@@ -176,15 +181,15 @@ const days: Day[] = [
 
 const route = [
   { city: "Tokyo", days: "Dec 9–10", tone: "coral" },
-  { city: "Nagano", days: "Dec 11–12", tone: "gold" },
+  { city: "Shibu Onsen", days: "Dec 11–12", tone: "gold" },
   { city: "Kyoto", days: "Dec 13–15", tone: "sage" },
   { city: "Osaka", days: "Dec 16", tone: "blue" },
   { city: "Tokyo", days: "Dec 17–18", tone: "coral" },
 ];
 
 const trainLegs = [
-  { from: "Tokyo", to: "Nagano", date: "DEC 11", time: "~1H 25M", note: "Hokuriku Shinkansen" },
-  { from: "Nagano", to: "Kyoto", date: "DEC 13", time: "~3H 30M", note: "Via Nagoya" },
+  { from: "Tokyo", to: "Shibu Onsen", date: "DEC 11", time: "~2H 20M", note: "Via Nagano + Yudanaka" },
+  { from: "Shibu Onsen", to: "Kyoto", date: "DEC 13", time: "~4H 30M", note: "Via Nagano + Nagoya" },
   { from: "Kyoto", to: "Osaka", date: "DEC 16", time: "~30M", note: "JR special rapid" },
   { from: "Shin-Osaka", to: "Tokyo", date: "DEC 17", time: "~2H 30M", note: "Tōkaidō Shinkansen" },
 ];
@@ -192,7 +197,7 @@ const trainLegs = [
 const initialBookings = [
   { id: "flight", label: "Flights + airport", detail: "Arrival confirmed · Dec 9 at 3:00 PM", done: true },
   { id: "tokyo1", label: "Tokyo hotel · stay 1", detail: "Dec 9–11 · 2 nights", done: false },
-  { id: "nagano", label: "Nagano hotel", detail: "Dec 11–13 · 2 nights", done: false },
+  { id: "nagano", label: "Shibu Onsen ryokan", detail: "Dec 11–13 · 2 nights · choose an inn with nine-bath access", done: false },
   { id: "kyoto", label: "Kyoto hotel", detail: "Dec 13–16 · 3 nights", done: false },
   { id: "osaka", label: "Osaka hotel", detail: "Dec 16–17 · 1 night", done: false },
   { id: "tokyo2", label: "Tokyo hotel · stay 2", detail: "Dec 17–18 · 1 night", done: false },
@@ -200,7 +205,7 @@ const initialBookings = [
   { id: "special", label: "Special reservations", detail: "Shibuya Sky, restaurants, or teamLab", done: false },
 ];
 
-const cityOptions: ("All" | City)[] = ["All", "Tokyo", "Nagano", "Kyoto", "Osaka"];
+const cityOptions: ("All" | City)[] = ["All", "Tokyo", "Shibu Onsen", "Kyoto", "Osaka"];
 
 export default function Home() {
   const [completed, setCompleted] = useState<number[]>([]);
@@ -281,7 +286,7 @@ export default function Home() {
             <em>One beautiful loop.</em>
           </h1>
           <p className="intro">
-            Tokyo lights, mountain air, quiet temples, and Osaka nights—
+            Tokyo lights, Shibu Onsen steam, quiet temples, and Osaka nights—
             all in one easy-to-follow place.
           </p>
           <div className="hero-actions">
@@ -310,7 +315,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="route-caption">東京 → 長野 → 京都 → 大阪 → 東京</p>
+          <p className="route-caption">東京 → 渋温泉 → 京都 → 大阪 → 東京</p>
         </aside>
       </section>
 
@@ -350,7 +355,7 @@ export default function Home() {
           {visibleDays.map((day) => {
             const isDone = completed.includes(day.id);
             return (
-              <article className={`day-card city-${day.city.toLowerCase()} ${isDone ? "is-complete" : ""}`} key={day.id}>
+              <article className={`day-card city-${day.city.toLowerCase().replaceAll(" ", "-")} ${isDone ? "is-complete" : ""}`} key={day.id}>
                 <button className="day-check" onClick={() => toggleDay(day.id)} aria-label={`${isDone ? "Mark incomplete" : "Mark complete"}: day ${day.id}, ${day.title}`}>
                   <span>{isDone ? "✓" : day.id.toString().padStart(2, "0")}</span>
                 </button>
@@ -434,8 +439,8 @@ export default function Home() {
           <h2>Leave a little room<br />for the unexpected.</h2>
         </div>
         <div className="notes-grid">
-          <div><span>01</span><b>Pack for winter</b><p>Warm layers, a compact umbrella, and shoes with grip for Nagano.</p></div>
-          <div><span>02</span><b>Travel light</b><p>Forward larger bags from Tokyo to Kyoto and take a small bag to Nagano.</p></div>
+          <div><span>01</span><b>Pack for winter</b><p>Warm layers, a compact umbrella, and shoes with grip for Shibu Onsen.</p></div>
+          <div><span>02</span><b>Travel light</b><p>Forward larger bags from Tokyo to Kyoto and take a small bag to Shibu Onsen.</p></div>
           <div><span>03</span><b>Stay connected</b><p>Arrange an eSIM or pocket Wi-Fi before landing.</p></div>
           <div><span>04</span><b>Keep it flexible</b><p>Weather and energy can change—each day has room to wander.</p></div>
         </div>
@@ -443,7 +448,7 @@ export default function Home() {
 
       <footer>
         <div className="footer-mark"><span /> NIHON NOTES</div>
-        <p>DECEMBER 09—18 · TOKYO, NAGANO, KYOTO & OSAKA</p>
+        <p>DECEMBER 09—18 · TOKYO, SHIBU ONSEN, KYOTO & OSAKA</p>
         <a href="#top">BACK TO TOP ↑</a>
       </footer>
     </main>
