@@ -52,24 +52,86 @@ const days: Day[] = [
     id: 3,
     date: "11",
     weekday: "FRI",
-    city: "Shibu Onsen",
-    japanese: "渋温泉",
-    title: "Ryokan life in Shibu Onsen",
-    summary: "Travel through Nagano to a 1,300-year-old hot-spring town and settle into a ryokan.",
+    city: "Kyoto",
+    japanese: "京都",
+    title: "Lantern-lit lanes in Kyoto",
+    summary: "Ride west to Kyoto, settle in, and spend the evening wandering Gion.",
     events: [
-      { time: "09:00", title: "Shinkansen to Nagano", note: "Tokyo Station → Nagano · about 1 hr 25 min" },
-      { time: "11:00", title: "Nagano Dentetsu to Yudanaka", note: "Limited express · about 45 minutes" },
-      { time: "12:00", title: "Bus or taxi to Shibu Onsen", note: "About 5 minutes from Yudanaka Station" },
-      { time: "15:00", title: "Ryokan check-in + onsen walk", note: "Pick up the guest key for Shibu Onsen’s nine public baths" },
-      { time: "18:00", title: "Kaiseki dinner at the ryokan" },
+      { time: "09:00", title: "Shinkansen to Kyoto", note: "Tokyo Station → Kyoto · about 2 hr 10 min" },
+      { time: "12:00", title: "Check in + Nishiki Market", note: "Drop bags first if the room is not ready" },
+      { time: "16:30", title: "Gion & Yasaka Shrine", note: "Continue to Ponto-chō for dinner" },
     ],
-    stay: "Shibu Onsen · Ryokan night 1",
-    transfer: "Tokyo → Shibu Onsen",
+    stay: "Kyoto · Night 1",
+    transfer: "Tokyo → Kyoto",
   },
   {
     id: 4,
     date: "12",
     weekday: "SAT",
+    city: "Kyoto",
+    japanese: "京都",
+    title: "Torii gates & hillside temples",
+    summary: "Start beneath Fushimi Inari’s gates, then trace Kyoto’s eastern hills.",
+    events: [
+      { time: "07:00", title: "Fushimi Inari", note: "Walk beyond the main viewpoint for fewer crowds" },
+      { time: "11:30", title: "Kiyomizu-dera" },
+      { time: "14:00", title: "Ninenzaka to Nanzen-ji", note: "Tea break along the way" },
+    ],
+    stay: "Kyoto · Night 2",
+  },
+  {
+    id: 5,
+    date: "13",
+    weekday: "SUN",
+    city: "Kyoto",
+    japanese: "京都",
+    title: "Bamboo, gardens & golden light",
+    summary: "A western Kyoto day, from Arashiyama’s grove to Kinkaku-ji.",
+    events: [
+      { time: "07:30", title: "Arashiyama bamboo grove" },
+      { time: "09:00", title: "Tenryū-ji garden", note: "Optional riverside walk afterward" },
+      { time: "14:00", title: "Kinkaku-ji", note: "Return for a relaxed final Kyoto dinner" },
+    ],
+    stay: "Kyoto · Night 3",
+  },
+  {
+    id: 6,
+    date: "14",
+    weekday: "MON",
+    city: "Osaka",
+    japanese: "大阪",
+    title: "Osaka turns up the volume",
+    summary: "Castle views, market bites, and Dōtonbori glowing after dark.",
+    events: [
+      { time: "09:00", title: "Train to Osaka", note: "Kyoto → Osaka · about 30 minutes" },
+      { time: "11:00", title: "Osaka Castle grounds" },
+      { time: "16:00", title: "Kuromon + Dōtonbori", note: "Try takoyaki and okonomiyaki" },
+    ],
+    stay: "Osaka · Night 1",
+    transfer: "Kyoto → Osaka",
+  },
+  {
+    id: 7,
+    date: "15",
+    weekday: "TUE",
+    city: "Shibu Onsen",
+    japanese: "渋温泉",
+    title: "From Osaka to onsen country",
+    summary: "Cross the mountains to a 1,300-year-old hot-spring town and settle into a ryokan.",
+    events: [
+      { time: "08:30", title: "Train toward Nagano", note: "Shin-Osaka → Nagoya → Nagano · allow about 4 hours" },
+      { time: "13:00", title: "Nagano Dentetsu to Yudanaka", note: "Limited express · about 45 minutes" },
+      { time: "14:00", title: "Bus or taxi to Shibu Onsen", note: "About 5 minutes from Yudanaka Station" },
+      { time: "15:00", title: "Ryokan check-in + onsen walk", note: "Pick up the guest key for Shibu Onsen’s nine public baths" },
+      { time: "18:00", title: "Kaiseki dinner at the ryokan" },
+    ],
+    stay: "Shibu Onsen · Ryokan night 1",
+    transfer: "Osaka → Shibu Onsen",
+  },
+  {
+    id: 8,
+    date: "16",
+    weekday: "WED",
     city: "Shibu Onsen",
     japanese: "渋温泉",
     title: "Snow monkeys & the nine baths",
@@ -84,83 +146,21 @@ const days: Day[] = [
     stay: "Shibu Onsen · Ryokan night 2",
   },
   {
-    id: 5,
-    date: "13",
-    weekday: "SUN",
-    city: "Kyoto",
-    japanese: "京都",
-    title: "From peaks to lantern-lit lanes",
-    summary: "Cross the country to Kyoto and spend the evening wandering Gion.",
-    events: [
-      { time: "08:00", title: "Return to Nagano Station", note: "Yudanaka → Nagano by limited express" },
-      { time: "09:30", title: "Train to Kyoto", note: "Limited express + Shinkansen via Nagoya · allow about 4 hr 30 min total" },
-      { time: "13:00", title: "Check in + Nishiki Market" },
-      { time: "17:00", title: "Gion & Yasaka Shrine", note: "Continue to Ponto-chō for dinner" },
-    ],
-    stay: "Kyoto · Night 1",
-    transfer: "Shibu Onsen → Kyoto",
-  },
-  {
-    id: 6,
-    date: "14",
-    weekday: "MON",
-    city: "Kyoto",
-    japanese: "京都",
-    title: "Torii gates & hillside temples",
-    summary: "Start beneath Fushimi Inari’s gates, then trace Kyoto’s eastern hills.",
-    events: [
-      { time: "07:00", title: "Fushimi Inari", note: "Walk beyond the main viewpoint for fewer crowds" },
-      { time: "11:30", title: "Kiyomizu-dera" },
-      { time: "14:00", title: "Ninenzaka to Nanzen-ji", note: "Tea break along the way" },
-    ],
-    stay: "Kyoto · Night 2",
-  },
-  {
-    id: 7,
-    date: "15",
-    weekday: "TUE",
-    city: "Kyoto",
-    japanese: "京都",
-    title: "Bamboo, gardens & golden light",
-    summary: "A western Kyoto day, from Arashiyama’s grove to Kinkaku-ji.",
-    events: [
-      { time: "07:30", title: "Arashiyama bamboo grove" },
-      { time: "09:00", title: "Tenryū-ji garden", note: "Optional riverside walk afterward" },
-      { time: "14:00", title: "Kinkaku-ji", note: "Return for a relaxed final Kyoto dinner" },
-    ],
-    stay: "Kyoto · Night 3",
-  },
-  {
-    id: 8,
-    date: "16",
-    weekday: "WED",
-    city: "Osaka",
-    japanese: "大阪",
-    title: "Osaka turns up the volume",
-    summary: "Castle views, market bites, and Dōtonbori glowing after dark.",
-    events: [
-      { time: "09:00", title: "Train to Osaka", note: "Kyoto → Osaka · about 30 minutes" },
-      { time: "11:00", title: "Osaka Castle grounds" },
-      { time: "16:00", title: "Kuromon + Dōtonbori", note: "Try takoyaki and okonomiyaki" },
-    ],
-    stay: "Osaka · Night 1",
-    transfer: "Kyoto → Osaka",
-  },
-  {
     id: 9,
     date: "17",
     weekday: "THU",
     city: "Tokyo",
     japanese: "東京",
-    title: "The loop closes in Tokyo",
-    summary: "Glide back east, then spend a final evening in Shibuya and Daikanyama.",
+    title: "Back to Tokyo, beautifully rested",
+    summary: "Leave the mountains after breakfast and close the loop with one final Tokyo night.",
     events: [
-      { time: "09:00", title: "Shinkansen to Tokyo", note: "Shin-Osaka → Tokyo · about 2 hr 30 min" },
-      { time: "13:00", title: "Check in + slow lunch" },
-      { time: "16:00", title: "Daikanyama to Shibuya", note: "Coffee, shops, and a celebratory dinner" },
+      { time: "09:00", title: "Yudanaka to Nagano", note: "Ryokan shuttle or bus, then Nagano Dentetsu" },
+      { time: "11:00", title: "Shinkansen to Tokyo", note: "Nagano → Tokyo · about 1 hr 25 min" },
+      { time: "14:00", title: "Check in + slow lunch" },
+      { time: "17:00", title: "Daikanyama to Shibuya", note: "Coffee, shops, and a celebratory dinner" },
     ],
     stay: "Tokyo · Final night",
-    transfer: "Osaka → Tokyo",
+    transfer: "Shibu Onsen → Tokyo",
   },
   {
     id: 10,
@@ -181,25 +181,25 @@ const days: Day[] = [
 
 const route = [
   { city: "Tokyo", days: "Dec 9–10", tone: "coral" },
-  { city: "Shibu Onsen", days: "Dec 11–12", tone: "gold" },
-  { city: "Kyoto", days: "Dec 13–15", tone: "sage" },
-  { city: "Osaka", days: "Dec 16", tone: "blue" },
+  { city: "Kyoto", days: "Dec 11–13", tone: "sage" },
+  { city: "Osaka", days: "Dec 14", tone: "blue" },
+  { city: "Shibu Onsen", days: "Dec 15–16", tone: "gold" },
   { city: "Tokyo", days: "Dec 17–18", tone: "coral" },
 ];
 
 const trainLegs = [
-  { from: "Tokyo", to: "Shibu Onsen", date: "DEC 11", time: "~2H 20M", note: "Via Nagano + Yudanaka" },
-  { from: "Shibu Onsen", to: "Kyoto", date: "DEC 13", time: "~4H 30M", note: "Via Nagano + Nagoya" },
-  { from: "Kyoto", to: "Osaka", date: "DEC 16", time: "~30M", note: "JR special rapid" },
-  { from: "Shin-Osaka", to: "Tokyo", date: "DEC 17", time: "~2H 30M", note: "Tōkaidō Shinkansen" },
+  { from: "Tokyo", to: "Kyoto", date: "DEC 11", time: "~2H 10M", note: "Tōkaidō Shinkansen" },
+  { from: "Kyoto", to: "Osaka", date: "DEC 14", time: "~30M", note: "JR special rapid" },
+  { from: "Osaka", to: "Shibu Onsen", date: "DEC 15", time: "~5H", note: "Via Nagoya + Nagano" },
+  { from: "Shibu Onsen", to: "Tokyo", date: "DEC 17", time: "~2H 20M", note: "Via Yudanaka + Nagano" },
 ];
 
 const initialBookings = [
   { id: "flight", label: "Flights + airport", detail: "Arrival confirmed · Dec 9 at 3:00 PM", done: true },
   { id: "tokyo1", label: "Tokyo hotel · stay 1", detail: "Dec 9–11 · 2 nights", done: false },
-  { id: "nagano", label: "Shibu Onsen ryokan", detail: "Dec 11–13 · 2 nights · choose an inn with nine-bath access", done: false },
-  { id: "kyoto", label: "Kyoto hotel", detail: "Dec 13–16 · 3 nights", done: false },
-  { id: "osaka", label: "Osaka hotel", detail: "Dec 16–17 · 1 night", done: false },
+  { id: "kyoto", label: "Kyoto hotel", detail: "Dec 11–14 · 3 nights", done: false },
+  { id: "osaka", label: "Osaka hotel", detail: "Dec 14–15 · 1 night", done: false },
+  { id: "nagano", label: "Shibu Onsen ryokan", detail: "Dec 15–17 · 2 nights · choose an inn with nine-bath access", done: false },
   { id: "tokyo2", label: "Tokyo hotel · stay 2", detail: "Dec 17–18 · 1 night", done: false },
   { id: "trains", label: "Intercity trains", detail: "Reserve seats once travel times are set", done: false },
   { id: "special", label: "Special reservations", detail: "Shibuya Sky, restaurants, or teamLab", done: false },
@@ -286,7 +286,7 @@ export default function Home() {
             <em>One beautiful loop.</em>
           </h1>
           <p className="intro">
-            Tokyo lights, Shibu Onsen steam, quiet temples, and Osaka nights—
+            Tokyo lights, Kyoto temples, Osaka nights, and Shibu Onsen steam—
             all in one easy-to-follow place.
           </p>
           <div className="hero-actions">
@@ -315,7 +315,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="route-caption">東京 → 渋温泉 → 京都 → 大阪 → 東京</p>
+          <p className="route-caption">東京 → 京都 → 大阪 → 渋温泉 → 東京</p>
         </aside>
       </section>
 
