@@ -149,6 +149,8 @@ h1 em { color: var(--red); font-weight: 400; }
 .schedule-row div { display: grid; gap: 4px; }
 .schedule-row b { font-size: 12px; }
 .schedule-row small { color: var(--muted); font-size: 11px; }
+.event-link { width: max-content; margin-top: 3px; color: var(--red); font-size: 8px; font-weight: 800; letter-spacing: .13em; }
+.event-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .day-meta { display: grid; justify-items: end; gap: 9px; padding-top: 24px; text-align: right; }
 .day-meta b { color: var(--muted); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
 .transfer-label { color: var(--red); font-size: 8px; font-weight: 800; letter-spacing: .13em; }

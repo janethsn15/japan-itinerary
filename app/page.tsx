@@ -12,7 +12,7 @@ type Day = {
   japanese: string;
   title: string;
   summary: string;
-  events: { time: string; title: string; note?: string }[];
+  events: { time: string; title: string; note?: string; url?: string; linkLabel?: string }[];
   stay: string;
   transfer?: string;
 };
@@ -24,14 +24,35 @@ const days: Day[] = [
     weekday: "WED",
     city: "Tokyo",
     japanese: "東京",
-    title: "Arrival & a gentle first night",
-    summary: "Land, settle in, and ease into Japan with a cozy neighborhood dinner.",
+    title: "Haneda to Shinjuku after dark",
+    summary: "Go straight to Shinjuku for Golden Gai, Kabukichō lights, and an optional love-hotel stay.",
     events: [
-      { time: "15:00", title: "Arrive in Tokyo", note: "Allow 60–90 minutes for immigration and bags" },
-      { time: "17:00", title: "Airport transfer", note: "Train or limousine bus to your hotel" },
-      { time: "19:30", title: "Check in + local dinner", note: "Keep the first evening flexible" },
+      { time: "15:05", title: "Delta 7 arrives at Haneda", note: "From Los Angeles · allow 60–90 minutes for immigration and bags" },
+      {
+        time: "17:00",
+        title: "Head straight to Shinjuku",
+        note: "Airport bus to Shinjuku Station West Exit is about 35 minutes; allow extra time for traffic",
+        url: "https://tokyo-haneda.com/en/access/bus/index.html",
+        linkLabel: "HANEDA ACCESS",
+      },
+      { time: "18:30", title: "Drop bags + quick dinner", note: "Stay near Shinjuku East, Kabukichō, or Shinjuku-sanchōme for an easy walk" },
+      {
+        time: "20:00",
+        title: "Golden Gai bar hop",
+        note: "Most tiny bars open around 8 PM; choose visitor-friendly signs and ask before taking photos",
+        url: "https://www.gotokyo.org/en/spot/62/index.html",
+        linkLabel: "GOLDEN GAI GUIDE",
+      },
+      { time: "22:00", title: "Kabukichō after dark", note: "Walk Godzilla Road and Tokyu Kabukicho Tower; politely ignore street touts" },
+      {
+        time: "23:00",
+        title: "Optional love-hotel stop or stay",
+        note: "HOTEL ATLAS is an adults-only Kabukichō option with short-rest and overnight plans; reserve through its official site or Booking.com",
+        url: "https://hotel-atlas.jp/reserve/",
+        linkLabel: "HOTEL ATLAS",
+      },
     ],
-    stay: "Tokyo · Night 1",
+    stay: "Shinjuku · Night 1",
   },
   {
     id: 2,
@@ -195,14 +216,14 @@ const trainLegs = [
 ];
 
 const initialBookings = [
-  { id: "flight", label: "Flights + airport", detail: "Arrival confirmed · Dec 9 at 3:00 PM", done: true },
-  { id: "tokyo1", label: "Tokyo hotel · stay 1", detail: "Dec 9–11 · 2 nights", done: false },
+  { id: "flight", label: "Flight to Tokyo", detail: "Delta 7 · LAX → HND · arrives Dec 9 at 3:05 PM", done: true },
+  { id: "tokyo1", label: "Shinjuku hotel · stay 1", detail: "Dec 9–11 · 2 nights · east side keeps nightlife walkable", done: false },
   { id: "kyoto", label: "Kyoto hotel", detail: "Dec 11–14 · 3 nights", done: false },
   { id: "osaka", label: "Osaka hotel", detail: "Dec 14–15 · 1 night", done: false },
   { id: "nagano", label: "Shibu Onsen ryokan", detail: "Dec 15–17 · 2 nights · choose an inn with nine-bath access", done: false },
   { id: "tokyo2", label: "Tokyo hotel · stay 2", detail: "Dec 17–18 · 1 night", done: false },
   { id: "trains", label: "Intercity trains", detail: "Reserve seats once travel times are set", done: false },
-  { id: "special", label: "Special reservations", detail: "Shibuya Sky, restaurants, or teamLab", done: false },
+  { id: "special", label: "Special reservations", detail: "HOTEL ATLAS opens reservations about 1 month ahead; add Shibuya Sky later", done: false },
 ];
 
 const cityOptions: ("All" | City)[] = ["All", "Tokyo", "Shibu Onsen", "Kyoto", "Osaka"];
@@ -291,7 +312,7 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a className="primary-action" href="#itinerary">VIEW ITINERARY <span>↓</span></a>
-            <span className="arrival-note"><b>ARRIVAL</b> DEC 9 · 3:00 PM · TOKYO</span>
+            <span className="arrival-note"><b>ARRIVAL</b> DEC 9 · 3:05 PM · HANEDA</span>
           </div>
         </div>
 
@@ -330,7 +351,7 @@ export default function Home() {
           </div>
           <strong>{progress}%</strong>
         </div>
-        <div className="quick-fact"><span>次</span><div><small>NEXT UP</small><b>Tokyo arrival · 3 PM</b></div></div>
+        <div className="quick-fact"><span>次</span><div><small>NEXT UP</small><b>Haneda → Shinjuku · 3:05 PM</b></div></div>
         <div className="quick-fact"><span>宿</span><div><small>NIGHTS</small><b>9 nights · 5 stays</b></div></div>
       </section>
 
@@ -371,7 +392,15 @@ export default function Home() {
                     {day.events.map((event) => (
                       <div className="schedule-row" key={`${day.id}-${event.time}-${event.title}`}>
                         <time>{event.time}</time>
-                        <div><b>{event.title}</b>{event.note && <small>{event.note}</small>}</div>
+                        <div>
+                          <b>{event.title}</b>
+                          {event.note && <small>{event.note}</small>}
+                          {event.url && (
+                            <a className="event-link" href={event.url} target="_blank" rel="noreferrer">
+                              {event.linkLabel ?? "DETAILS"} ↗
+                            </a>
+                          )}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -442,7 +471,7 @@ export default function Home() {
           <div><span>01</span><b>Pack for winter</b><p>Warm layers, a compact umbrella, and shoes with grip for Shibu Onsen.</p></div>
           <div><span>02</span><b>Travel light</b><p>Forward larger bags from Tokyo to Kyoto and take a small bag to Shibu Onsen.</p></div>
           <div><span>03</span><b>Stay connected</b><p>Arrange an eSIM or pocket Wi-Fi before landing.</p></div>
-          <div><span>04</span><b>Keep it flexible</b><p>Weather and energy can change—each day has room to wander.</p></div>
+          <div><span>04</span><b>Nightlife smarts</b><p>Confirm cover charges before entering, skip street touts, and do not drink or smoke in Golden Gai&apos;s lanes.</p></div>
         </div>
       </section>
 
