@@ -216,7 +216,7 @@ const trainLegs = [
 ];
 
 const initialBookings = [
-  { id: "flight", label: "Flight to Tokyo", detail: "Delta 7 · LAX → HND · arrives Dec 9 at 3:05 PM", done: true },
+  { id: "flight", label: "Flight to Tokyo", detail: "Delta 7 · LAX Dec 8 at 10:05 AM → HND Dec 9 at 3:05 PM", done: true },
   { id: "tokyo1", label: "Shinjuku hotel · stay 1", detail: "Dec 9–11 · 2 nights · east side keeps nightlife walkable", done: false },
   { id: "kyoto", label: "Kyoto hotel", detail: "Dec 11–14 · 3 nights", done: false },
   { id: "osaka", label: "Osaka hotel", detail: "Dec 14–15 · 1 night", done: false },
