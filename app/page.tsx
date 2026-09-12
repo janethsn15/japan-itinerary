@@ -58,16 +58,19 @@ const days: Day[] = [
     id: 2,
     date: "10",
     weekday: "THU",
-    city: "Tokyo",
-    japanese: "東京",
-    title: "Old Tokyo, new Tokyo",
-    summary: "Temple calm in Asakusa, then an electric evening above Shibuya.",
+    city: "Kyoto",
+    japanese: "京都",
+    title: "Shinjuku to Kyoto",
+    summary: "Trade Tokyo's neon for Kyoto's lanterns, with an easy afternoon around Nishiki and Gion.",
     events: [
-      { time: "08:00", title: "Sensō-ji & Nakamise", note: "Go early for quieter temple grounds" },
-      { time: "11:00", title: "Ueno + Ameyoko", note: "Street snacks and market browsing" },
-      { time: "17:00", title: "Shibuya crossing", note: "Optional sunset slot at Shibuya Sky" },
+      { time: "08:30", title: "Check out in Shinjuku", note: "A comfortable start after the first-night bar crawl" },
+      { time: "09:15", title: "Shinjuku to Shinagawa", note: "Use a local JR train and allow time to find the Shinkansen platforms" },
+      { time: "10:00", title: "Shinkansen to Kyoto", note: "Shinagawa → Kyoto · about 2 hr 10 min" },
+      { time: "13:00", title: "Drop bags + Nishiki Market", note: "Lunch and an easy first look at central Kyoto" },
+      { time: "17:00", title: "Gion & Yasaka Shrine", note: "Continue to Ponto-chō for dinner" },
     ],
-    stay: "Tokyo · Night 2",
+    stay: "Kyoto · Night 1",
+    transfer: "Tokyo → Kyoto",
   },
   {
     id: 3,
@@ -82,8 +85,7 @@ const days: Day[] = [
       { time: "12:00", title: "Check in + Nishiki Market", note: "Drop bags first if the room is not ready" },
       { time: "16:30", title: "Gion & Yasaka Shrine", note: "Continue to Ponto-chō for dinner" },
     ],
-    stay: "Kyoto · Night 1",
-    transfer: "Tokyo → Kyoto",
+    stay: "Kyoto · Night 2",
   },
   {
     id: 4,
@@ -98,7 +100,7 @@ const days: Day[] = [
       { time: "11:30", title: "Kiyomizu-dera" },
       { time: "14:00", title: "Ninenzaka to Nanzen-ji", note: "Tea break along the way" },
     ],
-    stay: "Kyoto · Night 2",
+    stay: "Kyoto · Night 3",
   },
   {
     id: 5,
@@ -113,7 +115,7 @@ const days: Day[] = [
       { time: "09:00", title: "Tenryū-ji garden", note: "Optional riverside walk afterward" },
       { time: "14:00", title: "Kinkaku-ji", note: "Return for a relaxed final Kyoto dinner" },
     ],
-    stay: "Kyoto · Night 3",
+    stay: "Kyoto · Night 4",
   },
   {
     id: 6,
@@ -201,15 +203,15 @@ const days: Day[] = [
 ];
 
 const route = [
-  { city: "Tokyo", days: "Dec 9–10", tone: "coral" },
-  { city: "Kyoto", days: "Dec 11–13", tone: "sage" },
+  { city: "Tokyo", days: "Dec 9", tone: "coral" },
+  { city: "Kyoto", days: "Dec 10–13", tone: "sage" },
   { city: "Osaka", days: "Dec 14", tone: "blue" },
   { city: "Shibu Onsen", days: "Dec 15–16", tone: "gold" },
   { city: "Tokyo", days: "Dec 17–18", tone: "coral" },
 ];
 
 const trainLegs = [
-  { from: "Tokyo", to: "Kyoto", date: "DEC 11", time: "~2H 10M", note: "Tōkaidō Shinkansen" },
+  { from: "Tokyo", to: "Kyoto", date: "DEC 10", time: "~2H 10M", note: "Tōkaidō Shinkansen" },
   { from: "Kyoto", to: "Osaka", date: "DEC 14", time: "~30M", note: "JR special rapid" },
   { from: "Osaka", to: "Shibu Onsen", date: "DEC 15", time: "~5H", note: "Via Nagoya + Nagano" },
   { from: "Shibu Onsen", to: "Tokyo", date: "DEC 17", time: "~2H 20M", note: "Via Yudanaka + Nagano" },
@@ -217,8 +219,8 @@ const trainLegs = [
 
 const initialBookings = [
   { id: "flight", label: "Flight to Tokyo", detail: "Delta 7 · LAX Dec 8 at 10:05 AM → HND Dec 9 at 3:05 PM", done: true },
-  { id: "tokyo1", label: "Shinjuku hotel · stay 1", detail: "Dec 9–11 · 2 nights · east side keeps nightlife walkable", done: false },
-  { id: "kyoto", label: "Kyoto hotel", detail: "Dec 11–14 · 3 nights", done: false },
+  { id: "tokyo1", label: "Shinjuku hotel · stay 1", detail: "Dec 9–10 · 1 night · east side keeps nightlife walkable", done: false },
+  { id: "kyoto", label: "Kyoto hotel", detail: "Dec 10–14 · 4 nights", done: false },
   { id: "osaka", label: "Osaka hotel", detail: "Dec 14–15 · 1 night", done: false },
   { id: "nagano", label: "Shibu Onsen ryokan", detail: "Dec 15–17 · 2 nights · choose an inn with nine-bath access", done: false },
   { id: "tokyo2", label: "Tokyo hotel · stay 2", detail: "Dec 17–18 · 1 night", done: false },
