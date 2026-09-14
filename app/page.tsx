@@ -81,14 +81,21 @@ const days: Day[] = [
     weekday: "THU",
     city: "Kyoto",
     japanese: "京都",
-    title: "Shinjuku to Kyoto",
-    summary: "Trade Tokyo's neon for Kyoto's lanterns, with an easy afternoon around Nishiki and Gion.",
+    title: "Kyoto arrival & neighborhood night",
+    summary: "Arrive at the Kyoto hotel at 3 PM, eat through Nishiki Market, then learn the streets around your stay.",
     events: [
       { time: "08:30", title: "Check out in Shinjuku", note: "A comfortable start after the first-night bar crawl" },
-      { time: "09:15", title: "Shinjuku to Shinagawa", note: "Use a local JR train and allow time to find the Shinkansen platforms" },
-      { time: "10:00", title: "Shinkansen to Kyoto", note: "Shinagawa → Kyoto · about 2 hr 10 min" },
-      { time: "13:00", title: "Drop bags + Nishiki Market", note: "Lunch and an easy first look at central Kyoto" },
-      { time: "17:00", title: "Gion & Yasaka Shrine", note: "Continue to Ponto-chō for dinner" },
+      { time: "09:30", title: "Shinjuku to Shinagawa", note: "Use a local JR train and allow time to find the Shinkansen platforms" },
+      { time: "10:30", title: "Shinkansen to Kyoto", note: "Choose a morning departure that leaves plenty of time for the 3 PM hotel arrival" },
+      { time: "15:00", title: "Arrive at the Kyoto hotel", note: "Check in, drop bags, and head back out for a relaxed first afternoon" },
+      {
+        time: "15:30",
+        title: "Nishiki Market food stop",
+        note: "Try a late lunch and snacks; individual shops keep their own hours, so start here soon after check-in",
+        url: "https://www.kyoto-nishiki.or.jp/",
+        linkLabel: "NISHIKI MARKET",
+      },
+      { time: "17:30", title: "Explore the hotel neighborhood", note: "Find the closest station, convenience store, breakfast spot, and a relaxed dinner nearby" },
     ],
     stay: "Kyoto · Night 1",
     transfer: "Tokyo → Kyoto",
@@ -99,12 +106,10 @@ const days: Day[] = [
     weekday: "FRI",
     city: "Kyoto",
     japanese: "京都",
-    title: "Lantern-lit lanes in Kyoto",
-    summary: "Ride west to Kyoto, settle in, and spend the evening wandering Gion.",
+    title: "Kyoto day one · to be determined",
+    summary: "An open Kyoto day—your To Do, Eat, and Shop lists will shape the route.",
     events: [
-      { time: "09:00", title: "Shinkansen to Kyoto", note: "Tokyo Station → Kyoto · about 2 hr 10 min" },
-      { time: "12:00", title: "Check in + Nishiki Market", note: "Drop bags first if the room is not ready" },
-      { time: "16:30", title: "Gion & Yasaka Shrine", note: "Continue to Ponto-chō for dinner" },
+      { time: "TBD", title: "Choose the day's Kyoto plan", note: "Add places from the City Guide when your list is ready" },
     ],
     stay: "Kyoto · Night 2",
   },
@@ -114,12 +119,10 @@ const days: Day[] = [
     weekday: "SAT",
     city: "Kyoto",
     japanese: "京都",
-    title: "Torii gates & hillside temples",
-    summary: "Start beneath Fushimi Inari’s gates, then trace Kyoto’s eastern hills.",
+    title: "Kyoto day two · to be determined",
+    summary: "A second open Kyoto day for the places you decide matter most.",
     events: [
-      { time: "07:00", title: "Fushimi Inari", note: "Walk beyond the main viewpoint for fewer crowds" },
-      { time: "11:30", title: "Kiyomizu-dera" },
-      { time: "14:00", title: "Ninenzaka to Nanzen-ji", note: "Tea break along the way" },
+      { time: "TBD", title: "Choose the day's Kyoto plan", note: "Keep this day flexible until the City Guide is filled in" },
     ],
     stay: "Kyoto · Night 3",
   },
@@ -127,16 +130,19 @@ const days: Day[] = [
     id: 5,
     date: "13",
     weekday: "SUN",
-    city: "Kyoto",
-    japanese: "京都",
-    title: "Bamboo, gardens & golden light",
-    summary: "A western Kyoto day, from Arashiyama’s grove to Kinkaku-ji.",
+    city: "Osaka",
+    japanese: "大阪",
+    title: "Kyoto to Osaka",
+    summary: "Make the short move to Osaka, settle in, and meet the city's energy around Namba after dark.",
     events: [
-      { time: "07:30", title: "Arashiyama bamboo grove" },
-      { time: "09:00", title: "Tenryū-ji garden", note: "Optional riverside walk afterward" },
-      { time: "14:00", title: "Kinkaku-ji", note: "Return for a relaxed final Kyoto dinner" },
+      { time: "09:30", title: "Check out in Kyoto", note: "Leave time for breakfast near the hotel" },
+      { time: "10:30", title: "Train to Osaka", note: "Kyoto → Osaka · about 30 minutes by JR special rapid" },
+      { time: "11:30", title: "Drop bags at the Osaka hotel" },
+      { time: "13:00", title: "Easy first afternoon", note: "Use your future Osaka To Do, Eat, and Shop lists" },
+      { time: "18:00", title: "Namba & Dōtonbori", note: "Dinner, neon, and a relaxed first Osaka night" },
     ],
-    stay: "Kyoto · Night 4",
+    stay: "Osaka · Night 1",
+    transfer: "Kyoto → Osaka",
   },
   {
     id: 6,
@@ -147,12 +153,12 @@ const days: Day[] = [
     title: "Osaka turns up the volume",
     summary: "Castle views, market bites, and Dōtonbori glowing after dark.",
     events: [
-      { time: "09:00", title: "Train to Osaka", note: "Kyoto → Osaka · about 30 minutes" },
-      { time: "11:00", title: "Osaka Castle grounds" },
-      { time: "16:00", title: "Kuromon + Dōtonbori", note: "Try takoyaki and okonomiyaki" },
+      { time: "09:00", title: "Osaka Castle grounds" },
+      { time: "12:30", title: "Kuromon Market", note: "Lunch and market browsing" },
+      { time: "16:00", title: "Choose an Osaka neighborhood", note: "Add the final plan from your City Guide list" },
+      { time: "19:00", title: "Dōtonbori after dark", note: "Try takoyaki and okonomiyaki" },
     ],
-    stay: "Osaka · Night 1",
-    transfer: "Kyoto → Osaka",
+    stay: "Osaka · Night 2",
   },
   {
     id: 7,
@@ -178,14 +184,21 @@ const days: Day[] = [
     weekday: "WED",
     city: "Shibu Onsen",
     japanese: "渋温泉",
-    title: "Snow monkeys & the nine baths",
-    summary: "Meet Jigokudani’s macaques, then return for an unhurried onsen evening.",
+    title: "Snow monkeys & back to the ryokan",
+    summary: "Visit Jigokudani in the winter morning, then return to the ryokan for one more restorative onsen night.",
     events: [
-      { time: "08:30", title: "Bus to Snow Monkey Park", note: "Use the winter access from the Kanbayashi side" },
-      { time: "09:00", title: "Forest walk to Jigokudani", note: "Roughly 30 minutes each way; wear shoes with grip" },
-      { time: "10:00", title: "Snow Monkey Park" },
-      { time: "14:00", title: "Return to Shibu Onsen", note: "Lunch, stone lanes, and a warm drink" },
-      { time: "16:00", title: "Nine-bath onsen trail", note: "Available to overnight guests until 10:00 PM" },
+      { time: "08:15", title: "Bus toward Snow Monkey Park", note: "Use the winter access from the Kanbayashi side" },
+      { time: "09:00", title: "Forest walk to Jigokudani", note: "Allow 30–35 minutes each way and wear shoes with grip" },
+      {
+        time: "10:00",
+        title: "Snow Monkey Park",
+        note: "Winter hours are generally 9 AM–4 PM; weather and the monkeys' movements can affect visits",
+        url: "https://en.jigokudani-yaenkoen.co.jp/",
+        linkLabel: "OFFICIAL PARK SITE",
+      },
+      { time: "13:00", title: "Return to Shibu Onsen", note: "Walk back to the bus stop, then return to the ryokan" },
+      { time: "14:30", title: "Ryokan rest + lunch", note: "Warm up and leave the afternoon unhurried" },
+      { time: "16:30", title: "Nine-bath onsen trail", note: "Available to overnight guests until 10:00 PM" },
     ],
     stay: "Shibu Onsen · Ryokan night 2",
   },
@@ -196,14 +209,14 @@ const days: Day[] = [
     city: "Tokyo",
     japanese: "東京",
     title: "Back to Tokyo, beautifully rested",
-    summary: "Leave the mountains after breakfast and close the loop with one final Tokyo night.",
+    summary: "Leave the mountains after breakfast and begin the final Tokyo stay.",
     events: [
       { time: "09:00", title: "Yudanaka to Nagano", note: "Ryokan shuttle or bus, then Nagano Dentetsu" },
       { time: "11:00", title: "Shinkansen to Tokyo", note: "Nagano → Tokyo · about 1 hr 25 min" },
       { time: "14:00", title: "Check in + slow lunch" },
       { time: "17:00", title: "Daikanyama to Shibuya", note: "Coffee, shops, and a celebratory dinner" },
     ],
-    stay: "Tokyo · Final night",
+    stay: "Tokyo · Night 1 of 2",
     transfer: "Shibu Onsen → Tokyo",
   },
   {
@@ -212,12 +225,25 @@ const days: Day[] = [
     weekday: "FRI",
     city: "Tokyo",
     japanese: "東京",
-    title: "One last taste of Tokyo",
-    summary: "A flexible farewell day for breakfast, souvenirs, and the journey home.",
+    title: "A full final day in Tokyo",
+    summary: "Keep the day open for the Tokyo places you add to the City Guide.",
     events: [
-      { time: "08:00", title: "Tsukiji Outer Market", note: "Breakfast and final food gifts" },
-      { time: "11:00", title: "Last-minute favorites", note: "Choose Ginza, Meiji Shrine, or a neighborhood wander" },
-      { time: "TBD", title: "Airport transfer", note: "Add departure time when flights are booked" },
+      { time: "TBD", title: "Choose the day's Tokyo plan", note: "Build the route from your To Do, Eat, and Shop lists" },
+    ],
+    stay: "Tokyo · Night 2 of 2",
+  },
+  {
+    id: 11,
+    date: "19",
+    weekday: "SAT",
+    city: "Tokyo",
+    japanese: "東京",
+    title: "Tokyo to Los Angeles",
+    summary: "Enjoy one last Tokyo morning, then fly home to LAX.",
+    events: [
+      { time: "08:00", title: "Breakfast + final packing", note: "Leave space for last-minute gifts" },
+      { time: "TBD", title: "Airport transfer", note: "Add the airport and departure time when the return flight is confirmed" },
+      { time: "TBD", title: "Fly to Los Angeles", note: "Tokyo → LAX" },
     ],
     stay: "Departure day",
   },
@@ -226,14 +252,14 @@ const days: Day[] = [
 const route = [
   { city: "Tokyo", days: "Dec 9", tone: "coral" },
   { city: "Kyoto", days: "Dec 10–13", tone: "sage" },
-  { city: "Osaka", days: "Dec 14", tone: "blue" },
-  { city: "Shibu Onsen", days: "Dec 15–16", tone: "gold" },
-  { city: "Tokyo", days: "Dec 17–18", tone: "coral" },
+  { city: "Osaka", days: "Dec 13–15", tone: "blue" },
+  { city: "Shibu Onsen", days: "Dec 15–17", tone: "gold" },
+  { city: "Tokyo", days: "Dec 17–19", tone: "coral" },
 ];
 
 const trainLegs = [
   { from: "Tokyo", to: "Kyoto", date: "DEC 10", time: "~2H 10M", note: "Tōkaidō Shinkansen" },
-  { from: "Kyoto", to: "Osaka", date: "DEC 14", time: "~30M", note: "JR special rapid" },
+  { from: "Kyoto", to: "Osaka", date: "DEC 13", time: "~30M", note: "JR special rapid" },
   { from: "Osaka", to: "Shibu Onsen", date: "DEC 15", time: "~5H", note: "Via Nagoya + Nagano" },
   { from: "Shibu Onsen", to: "Tokyo", date: "DEC 17", time: "~2H 20M", note: "Via Yudanaka + Nagano" },
 ];
@@ -241,13 +267,27 @@ const trainLegs = [
 const initialBookings = [
   { id: "flight", label: "Flight to Tokyo", detail: "Delta 7 · LAX Dec 8 at 10:05 AM → HND Dec 9 at 3:05 PM", done: true },
   { id: "tokyo1", label: "Shinjuku hotel · stay 1", detail: "Dec 9–10 · 1 night · east side keeps nightlife walkable", done: false },
-  { id: "kyoto", label: "Kyoto hotel", detail: "Dec 10–14 · 4 nights", done: false },
-  { id: "osaka", label: "Osaka hotel", detail: "Dec 14–15 · 1 night", done: false },
+  { id: "kyoto", label: "Kyoto hotel", detail: "Dec 10–13 · 3 nights", done: false },
+  { id: "osaka", label: "Osaka hotel", detail: "Dec 13–15 · 2 nights", done: false },
   { id: "nagano", label: "Shibu Onsen ryokan", detail: "Dec 15–17 · 2 nights · choose an inn with nine-bath access", done: false },
-  { id: "tokyo2", label: "Tokyo hotel · stay 2", detail: "Dec 17–18 · 1 night", done: false },
+  { id: "tokyo2", label: "Tokyo hotel · stay 2", detail: "Dec 17–19 · 2 nights", done: false },
+  { id: "return-flight", label: "Flight home", detail: "Dec 19 · Tokyo → LAX · add airport and time", done: false },
   { id: "trains", label: "Intercity trains", detail: "Reserve seats once travel times are set", done: false },
   { id: "special", label: "Special reservations", detail: "HOTEL ATLAS opens reservations about 1 month ahead; add Shibuya Sky later", done: false },
 ];
+
+const cityGuides = [
+  { city: "Tokyo", japanese: "東京", dates: "DEC 9 · 17–19", tone: "coral" },
+  { city: "Kyoto", japanese: "京都", dates: "DEC 10–13", tone: "sage" },
+  { city: "Osaka", japanese: "大阪", dates: "DEC 13–15", tone: "blue" },
+  { city: "Shibu Onsen", japanese: "渋温泉", dates: "DEC 15–17", tone: "gold" },
+] as const;
+
+const guideSections = [
+  { title: "To do", japanese: "見る", hint: "Sights, experiences, and neighborhoods" },
+  { title: "To eat", japanese: "食べる", hint: "Restaurants, cafés, bars, and market bites" },
+  { title: "To shop", japanese: "買う", hint: "Stores, markets, vintage, and souvenirs" },
+] as const;
 
 const cityOptions: ("All" | City)[] = ["All", "Tokyo", "Shibu Onsen", "Kyoto", "Osaka"];
 
@@ -299,10 +339,10 @@ export default function Home() {
           <span className="brand-mark" aria-hidden="true" />
           <span>NIHON NOTES</span>
         </a>
-        <div className="trip-date" aria-label="Trip dates December 9 through 18, 2026">
+        <div className="trip-date" aria-label="Trip dates December 9 through 19, 2026">
           <span>DEC 09</span>
           <span className="date-line" />
-          <span>DEC 18 · 2026</span>
+          <span>DEC 19 · 2026</span>
         </div>
         <button className="menu-button" aria-expanded={menuOpen} aria-controls="trip-menu" onClick={() => setMenuOpen(true)}>
           MENU <span aria-hidden="true">☰</span>
@@ -315,18 +355,19 @@ export default function Home() {
         <p className="eyebrow">TRIP INDEX</p>
         <nav>
           <a href="#itinerary" onClick={closeMenu}><span>01</span> Itinerary</a>
-          <a href="#trains" onClick={closeMenu}><span>02</span> Train plan</a>
-          <a href="#bookings" onClick={closeMenu}><span>03</span> Booking board</a>
-          <a href="#notes" onClick={closeMenu}><span>04</span> Trip notes</a>
+          <a href="#city-guide" onClick={closeMenu}><span>02</span> City guide</a>
+          <a href="#trains" onClick={closeMenu}><span>03</span> Train plan</a>
+          <a href="#bookings" onClick={closeMenu}><span>04</span> Booking board</a>
+          <a href="#notes" onClick={closeMenu}><span>05</span> Trip notes</a>
         </nav>
-        <div className="menu-stamp"><span>10</span><small>DAYS IN<br />JAPAN</small></div>
+        <div className="menu-stamp"><span>11</span><small>DAYS IN<br />JAPAN</small></div>
       </aside>
 
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow">YOUR JAPAN TRIP · 冬 2026</p>
           <h1>
-            Ten days.<br />
+            Eleven days.<br />
             <em>One beautiful loop.</em>
           </h1>
           <p className="intro">
@@ -342,7 +383,7 @@ export default function Home() {
         <aside className="route-card" aria-label="Trip route">
           <div className="route-card-heading">
             <span>THE ROUTE</span>
-            <span>10 DAYS</span>
+            <span>11 DAYS</span>
           </div>
           <div className="route-list">
             {route.map((stop, index) => (
@@ -367,7 +408,7 @@ export default function Home() {
         <div className="progress-block">
           <div className="progress-copy">
             <span>TRIP PROGRESS</span>
-            <b>{completed.length} OF 10 DAYS COMPLETE</b>
+            <b>{completed.length} OF {days.length} DAYS COMPLETE</b>
           </div>
           <div className="progress-track" aria-label={`${progress}% complete`}>
             <span style={{ width: `${progress}%` }} />
@@ -375,7 +416,7 @@ export default function Home() {
           <strong>{progress}%</strong>
         </div>
         <div className="quick-fact"><span>次</span><div><small>NEXT UP</small><b>Haneda → Shinjuku · 3:05 PM</b></div></div>
-        <div className="quick-fact"><span>宿</span><div><small>NIGHTS</small><b>9 nights · 5 stays</b></div></div>
+        <div className="quick-fact"><span>宿</span><div><small>NIGHTS</small><b>10 nights · 5 stays</b></div></div>
       </section>
 
       <section className="itinerary-section" id="itinerary">
@@ -438,6 +479,40 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="city-guide-section" id="city-guide">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">CITY BY CITY · 街のリスト</p>
+            <h2>Places for later</h2>
+          </div>
+          <p>Each city is ready for the To Do, Eat, and Shop lists you&apos;ll upload.</p>
+        </div>
+
+        <div className="city-guide-list">
+          {cityGuides.map((guide, cityIndex) => (
+            <article className={`guide-city guide-${guide.tone}`} key={guide.city}>
+              <header>
+                <span>0{cityIndex + 1}</span>
+                <div>
+                  <p>{guide.dates}</p>
+                  <h3>{guide.city} <em>{guide.japanese}</em></h3>
+                </div>
+              </header>
+              <div className="guide-columns">
+                {guideSections.map((section) => (
+                  <div className="guide-bucket" key={`${guide.city}-${section.title}`}>
+                    <span>{section.japanese}</span>
+                    <h4>{section.title}</h4>
+                    <p>{section.hint}</p>
+                    <div className="guide-placeholder">READY FOR YOUR LIST <b>+</b></div>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="trains-section" id="trains">
         <div className="section-heading light">
           <div>
@@ -485,7 +560,7 @@ export default function Home() {
       </section>
 
       <section className="notes-section" id="notes">
-        <div className="notes-number">10</div>
+        <div className="notes-number">11</div>
         <div>
           <p className="eyebrow">GOOD TO KNOW</p>
           <h2>Leave a little room<br />for the unexpected.</h2>
@@ -500,7 +575,7 @@ export default function Home() {
 
       <footer>
         <div className="footer-mark"><span /> NIHON NOTES</div>
-        <p>DECEMBER 09—18 · TOKYO, SHIBU ONSEN, KYOTO & OSAKA</p>
+        <p>DECEMBER 09—19 · TOKYO, SHIBU ONSEN, KYOTO & OSAKA</p>
         <a href="#top">BACK TO TOP ↑</a>
       </footer>
     </main>

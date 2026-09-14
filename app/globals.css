@@ -155,6 +155,27 @@ h1 em { color: var(--red); font-weight: 400; }
 .day-meta b { color: var(--muted); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
 .transfer-label { color: var(--red); font-size: 8px; font-weight: 800; letter-spacing: .13em; }
 
+.city-guide-section { padding: 110px 9vw 130px; border-top: 1px solid var(--line); background: rgba(255,255,255,.2); }
+.city-guide-list { display: grid; gap: 26px; }
+.guide-city { --guide-accent: var(--red); display: grid; grid-template-columns: minmax(220px, .55fr) minmax(0, 1.45fr); border: 1px solid var(--line); border-top: 4px solid var(--guide-accent); background: var(--paper); }
+.guide-coral { --guide-accent: var(--red); }
+.guide-sage { --guide-accent: var(--sage); }
+.guide-blue { --guide-accent: var(--blue); }
+.guide-gold { --guide-accent: var(--gold); }
+.guide-city > header { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; padding: 30px; border-right: 1px solid var(--line); }
+.guide-city > header > span { color: var(--guide-accent); font-family: Georgia, 'Times New Roman', serif; font-size: 13px; }
+.guide-city > header p { margin: 0 0 12px; color: var(--muted); font-size: 8px; font-weight: 800; letter-spacing: .16em; }
+.guide-city > header h3 { margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(28px, 3vw, 44px); line-height: .95; font-weight: 500; letter-spacing: -.04em; }
+.guide-city > header h3 em { display: block; margin-top: 10px; color: var(--guide-accent); font-size: .42em; font-style: normal; letter-spacing: .08em; }
+.guide-columns { display: grid; grid-template-columns: repeat(3, 1fr); }
+.guide-bucket { min-height: 210px; padding: 26px; display: flex; flex-direction: column; border-right: 1px solid var(--line); }
+.guide-bucket:last-child { border-right: 0; }
+.guide-bucket > span { color: var(--guide-accent); font-family: Georgia, 'Times New Roman', serif; font-size: 15px; }
+.guide-bucket h4 { margin: 30px 0 7px; font-family: Georgia, 'Times New Roman', serif; font-size: 25px; font-weight: 500; text-transform: capitalize; }
+.guide-bucket p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.guide-placeholder { margin-top: auto; padding-top: 22px; display: flex; justify-content: space-between; align-items: center; color: var(--muted); border-top: 1px dashed var(--line); font-size: 8px; font-weight: 800; letter-spacing: .13em; }
+.guide-placeholder b { width: 25px; height: 25px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--guide-accent); font-size: 14px; }
+
 .trains-section { padding: 110px 6vw 105px; background: var(--ink); color: var(--paper); }
 .section-heading.light > p { color: rgba(244,240,231,.6); }
 .train-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(244,240,231,.35); border-left: 1px solid rgba(244,240,231,.35); }
@@ -208,6 +229,8 @@ footer a { justify-self: end; }
   .day-card { grid-template-columns: 52px 105px minmax(0, 1fr); }
   .day-meta { display: none; }
   .train-grid, .notes-grid { grid-template-columns: repeat(2, 1fr); }
+  .guide-city { grid-template-columns: 1fr; }
+  .guide-city > header { border-right: 0; border-bottom: 1px solid var(--line); }
 }
 
 @media (max-width: 850px) {
@@ -220,7 +243,7 @@ footer a { justify-self: end; }
   .trip-dashboard { grid-template-columns: 1fr; padding: 0 24px; }
   .progress-block { border-right: 0; padding-right: 0; }
   .quick-fact { display: none; }
-  .itinerary-section, .bookings-section, .notes-section { padding: 80px 24px; }
+  .itinerary-section, .city-guide-section, .bookings-section, .notes-section { padding: 80px 24px; }
   .section-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
   .section-heading > p { width: auto; margin: 0; }
   .day-card { grid-template-columns: 45px 86px minmax(0, 1fr); gap: 14px; }
@@ -250,7 +273,9 @@ footer a { justify-self: end; }
   .day-date b { font-size: 34px; }
   .day-details { grid-column: 2; }
   .day-details h3 { font-size: 24px; }
-  .train-grid, .notes-grid { grid-template-columns: 1fr; }
+  .guide-columns, .train-grid, .notes-grid { grid-template-columns: 1fr; }
+  .guide-bucket { min-height: 185px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .guide-bucket:last-child { border-bottom: 0; }
   .train-card { min-height: 245px; }
   .train-cities b { font-size: 33px; }
   .booking-list button { grid-template-columns: 38px 1fr; }
