@@ -82,12 +82,18 @@ const days: Day[] = [
     city: "Kyoto",
     japanese: "京都",
     title: "Kyoto arrival & neighborhood night",
-    summary: "Arrive at the Kyoto hotel at 3 PM, eat through Nishiki Market, then learn the streets around your stay.",
+    summary: "Arrive at your Higashiyama hotel at 3 PM, eat through Nishiki Market, then learn the streets around your stay.",
     events: [
       { time: "08:30", title: "Check out in Shinjuku", note: "A comfortable start after the first-night bar crawl" },
       { time: "09:30", title: "Shinjuku to Shinagawa", note: "Use a local JR train and allow time to find the Shinkansen platforms" },
       { time: "10:30", title: "Shinkansen to Kyoto", note: "Choose a morning departure that leaves plenty of time for the 3 PM hotel arrival" },
-      { time: "15:00", title: "Arrive at the Kyoto hotel", note: "Check in, drop bags, and head back out for a relaxed first afternoon" },
+      {
+        time: "15:00",
+        title: "Arrive at the Kyoto hotel",
+        note: "542-2 Furukawachō, Higashiyama Ward, Kyoto, 605-0026, Japan · check in and drop bags",
+        url: "https://www.google.com/maps/search/?api=1&query=542-2+Furukawacho%2C+Higashiyama+Ward%2C+Kyoto%2C+605-0026%2C+Japan",
+        linkLabel: "OPEN IN MAPS",
+      },
       {
         time: "15:30",
         title: "Nishiki Market food stop",
@@ -267,7 +273,7 @@ const trainLegs = [
 const initialBookings = [
   { id: "flight", label: "Flight to Tokyo", detail: "Delta 7 · LAX Dec 8 at 10:05 AM → HND Dec 9 at 3:05 PM", done: true },
   { id: "tokyo1", label: "Shinjuku hotel · stay 1", detail: "Dec 9–10 · 1 night · east side keeps nightlife walkable", done: false },
-  { id: "kyoto", label: "Kyoto hotel", detail: "Dec 10–13 · 3 nights", done: false },
+  { id: "kyoto", label: "Kyoto hotel", detail: "Dec 10–13 · 3 nights · 542-2 Furukawachō, Higashiyama Ward, Kyoto 605-0026", done: false },
   { id: "osaka", label: "Osaka hotel", detail: "Dec 13–15 · 2 nights", done: false },
   { id: "nagano", label: "Shibu Onsen ryokan", detail: "Dec 15–17 · 2 nights · choose an inn with nine-bath access", done: false },
   { id: "tokyo2", label: "Tokyo hotel · stay 2", detail: "Dec 17–19 · 2 nights", done: false },
