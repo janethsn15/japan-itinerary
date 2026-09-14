@@ -295,6 +295,53 @@ const guideSections = [
   { title: "To shop", japanese: "買う", hint: "Stores, markets, vintage, and souvenirs" },
 ] as const;
 
+const kyotoFoodGroups = [
+  {
+    category: "Ramen",
+    places: [
+      { name: "Kyoto Wamen Yukichi Honpo", address: "506-1 Higashigawacho, Nakagyo Ward, Kyoto, 604-8046, Japan" },
+      { name: "Honke Daiichi Asahi Honten", address: "845 Higashishiokojicho, Shimogyo Ward, Kyoto, 600-8216, Japan" },
+      { name: "Tentenyu — Ichijoji Main Shop", address: "49 Ichijoji Nishisuginomiyacho, Sakyo Ward, Kyoto, 606-8112, Japan" },
+      { name: "Hakata-Nagahama-Ramen Miyoshi", address: "辻田ビル 1階 115 Ishiyacho, Nakagyo Ward, Kyoto, 604-8002, Japan" },
+    ],
+  },
+  {
+    category: "Sushi",
+    places: [
+      { name: "Sushi Ishimatsu", address: "36 Shishigatani Honenin Nishimachi, Sakyo Ward, Kyoto, 606-8427, Japan" },
+    ],
+  },
+  {
+    category: "Tempura, beef & comfort food",
+    places: [
+      { name: "Tendon Makino Kyoto Teramachi", address: "481-3 Nakasujicho, Nakagyo Ward, Kyoto, 604-8047, Japan" },
+      { name: "Gion Tempura Koromo", address: "570-8 Gionmachi Minamigawa, Higashiyama Ward, Kyoto, 605-0074, Japan" },
+      { name: "Kichi Kichi Omurice", address: "185-4 Zaimokucho, Nakagyo Ward, Kyoto, 604-8017, Japan" },
+      { name: "GYUKATSU Kyoto Katsugyu Sanjo-Kawaramachi", address: "河原町三条KSビル B1F 28 Ishibashicho, Nakagyo Ward, Kyoto, 604-8036, Japan" },
+      { name: "Hikiniku to Come (Kyoto)", address: "363 Kiyomotocho, Higashiyama Ward, Kyoto, 605-0084, Japan" },
+      { name: "Kyoto Kaiseki Yakiniku (BBQ) HIRO Gion Yamana-an", address: "16 Benzaitencho, Higashiyama Ward, Kyoto, 605-0086, Japan" },
+    ],
+  },
+  {
+    category: "Beer & gyoza",
+    places: [
+      { name: "Beer Komachi", address: "444 Hachikencho, Higashiyama Ward, Kyoto, 605-0027, Japan" },
+      { name: "Chao Chao Gyoza — Sanjo Kiyamachi", address: "117 Ishiyacho, Nakagyo Ward, Kyoto, 604-8002, Japan" },
+    ],
+  },
+  {
+    category: "Coffee & tea houses",
+    places: [
+      { name: "Rokujuan", address: "101 Nishirokkakucho, Nakagyo Ward, Kyoto, 604-8217, Japan" },
+      { name: "GOKAGO", address: "2 Chome-258 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan" },
+    ],
+  },
+] as const;
+
+function googleMapsDirections(name: string, address: string) {
+  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${name}, ${address}`)}`;
+}
+
 const cityOptions: ("All" | City)[] = ["All", "Tokyo", "Shibu Onsen", "Kyoto", "Osaka"];
 
 export default function Home() {
@@ -491,7 +538,7 @@ export default function Home() {
             <p className="eyebrow">CITY BY CITY · 街のリスト</p>
             <h2>Places for later</h2>
           </div>
-          <p>Each city is ready for the To Do, Eat, and Shop lists you&apos;ll upload.</p>
+          <p>Kyoto&apos;s food list is ready. The remaining To Do, Eat, and Shop sections are waiting for your next upload.</p>
         </div>
 
         <div className="city-guide-list">
@@ -505,14 +552,38 @@ export default function Home() {
                 </div>
               </header>
               <div className="guide-columns">
-                {guideSections.map((section) => (
-                  <div className="guide-bucket" key={`${guide.city}-${section.title}`}>
-                    <span>{section.japanese}</span>
-                    <h4>{section.title}</h4>
-                    <p>{section.hint}</p>
-                    <div className="guide-placeholder">READY FOR YOUR LIST <b>+</b></div>
-                  </div>
-                ))}
+                {guideSections.map((section) => {
+                  const placeGroups = guide.city === "Kyoto" && section.title === "To eat" ? kyotoFoodGroups : null;
+
+                  return (
+                    <div className={`guide-bucket ${placeGroups ? "has-places" : ""}`} key={`${guide.city}-${section.title}`}>
+                      <span>{section.japanese}</span>
+                      <h4>{section.title}</h4>
+                      <p>{section.hint}</p>
+                      {placeGroups ? (
+                        <div className="guide-place-groups">
+                          {placeGroups.map((group) => (
+                            <section className="guide-place-group" key={group.category}>
+                              <h5>{group.category}</h5>
+                              <ul>
+                                {group.places.map((place) => (
+                                  <li key={place.name}>
+                                    <a href={googleMapsDirections(place.name, place.address)} target="_blank" rel="noreferrer">
+                                      <b>{place.name}</b><span aria-hidden="true">↗</span>
+                                    </a>
+                                    <small>{place.address}</small>
+                                  </li>
+                                ))}
+                              </ul>
+                            </section>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="guide-placeholder">READY FOR YOUR LIST <b>+</b></div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </article>
           ))}

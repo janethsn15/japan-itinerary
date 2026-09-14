@@ -175,6 +175,17 @@ h1 em { color: var(--red); font-weight: 400; }
 .guide-bucket p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
 .guide-placeholder { margin-top: auto; padding-top: 22px; display: flex; justify-content: space-between; align-items: center; color: var(--muted); border-top: 1px dashed var(--line); font-size: 8px; font-weight: 800; letter-spacing: .13em; }
 .guide-placeholder b { width: 25px; height: 25px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--guide-accent); font-size: 14px; }
+.guide-bucket.has-places { min-width: 0; }
+.guide-place-groups { display: grid; gap: 24px; margin-top: 28px; }
+.guide-place-group { min-width: 0; }
+.guide-place-group h5 { margin: 0 0 10px; color: var(--guide-accent); font-size: 8px; letter-spacing: .16em; text-transform: uppercase; }
+.guide-place-group ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.guide-place-group li { min-width: 0; padding-top: 12px; border-top: 1px dashed var(--line); }
+.guide-place-group a { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; color: var(--ink); }
+.guide-place-group a b { font-size: 11px; line-height: 1.35; }
+.guide-place-group a span { flex: 0 0 auto; color: var(--guide-accent); font-size: 11px; }
+.guide-place-group a:hover b { color: var(--guide-accent); text-decoration: underline; text-underline-offset: 3px; }
+.guide-place-group small { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; line-height: 1.45; overflow-wrap: anywhere; }
 
 .trains-section { padding: 110px 6vw 105px; background: var(--ink); color: var(--paper); }
 .section-heading.light > p { color: rgba(244,240,231,.6); }
