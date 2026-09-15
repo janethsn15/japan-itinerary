@@ -81,9 +81,8 @@ main {
   grid-template-columns: minmax(0, 1.35fr) minmax(330px, .65fr);
   border-bottom: 1px solid var(--gold);
 }
-.hero-copy { position: relative; isolation: isolate; overflow: hidden; padding: 64px 5vw 58px 7vw; display: flex; flex-direction: column; justify-content: center; color: var(--cream); border-right: 1px solid rgba(247,236,211,.2); background: radial-gradient(circle at 88% 12%, rgba(200,122,108,.32), transparent 26%), radial-gradient(circle at 8% 94%, rgba(173,137,74,.2), transparent 30%), linear-gradient(135deg, #8d3027 0%, var(--red) 44%, var(--red-deep) 100%); }
-.hero-copy::before { content: ""; position: absolute; z-index: -2; inset: 0; opacity: .25; background-image: linear-gradient(rgba(247,236,211,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(247,236,211,.1) 1px, transparent 1px); background-size: 86px 86px; transform: rotate(-3deg) scale(1.08); }
-.hero-copy::after { content: "鶴"; position: absolute; z-index: -1; right: -2vw; top: -80px; color: rgba(247,236,211,.055); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(260px, 32vw, 520px); line-height: 1; }
+.hero-copy { position: relative; isolation: isolate; overflow: hidden; padding: 64px 5vw 58px 7vw; display: flex; flex-direction: column; justify-content: center; color: var(--cream); border-right: 1px solid rgba(247,236,211,.2); background-color: var(--red-deep); background-image: linear-gradient(90deg, rgba(70,16,15,.96) 0%, rgba(87,24,23,.88) 38%, rgba(87,24,23,.58) 76%, rgba(87,24,23,.42) 100%), url("/palace-cranes.jpg"); background-position: center, right center; background-size: auto, auto 100%; background-repeat: no-repeat; }
+.hero-copy::before { content: ""; position: absolute; z-index: -1; inset: 0; opacity: .13; background-image: linear-gradient(rgba(247,236,211,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(247,236,211,.1) 1px, transparent 1px); background-size: 86px 86px; transform: rotate(-3deg) scale(1.08); }
 .eyebrow { margin: 0 0 22px; color: var(--red); letter-spacing: .2em; font-size: 11px; font-weight: 800; }
 h1 { max-width: 800px; margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(64px, 7.4vw, 116px); line-height: .86; letter-spacing: -.065em; font-weight: 500; }
 h1 em { color: var(--red); font-weight: 400; }
@@ -94,8 +93,8 @@ h1 em { color: var(--red); font-weight: 400; }
 .tips-title { font-size: clamp(48px, 5vw, 78px); line-height: .9; }
 .tips-title em { color: #dfa08f; }
 .hero-tip-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 38px 0 0; padding: 0; border-top: 1px solid rgba(247,236,211,.42); border-left: 1px solid rgba(247,236,211,.26); list-style: none; }
-.hero-tip-grid li { min-height: 120px; display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: start; gap: 10px; padding: 17px 18px 16px 14px; border-right: 1px solid rgba(247,236,211,.26); border-bottom: 1px solid rgba(247,236,211,.26); background: rgba(247,236,211,.075); transition: background .2s ease; }
-.hero-tip-grid li:hover { background: rgba(247,236,211,.13); }
+.hero-tip-grid li { min-height: 120px; display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: start; gap: 10px; padding: 17px 18px 16px 14px; border-right: 1px solid rgba(247,236,211,.3); border-bottom: 1px solid rgba(247,236,211,.3); background: rgba(42,13,11,.43); backdrop-filter: blur(2px); transition: background .2s ease; }
+.hero-tip-grid li:hover { background: rgba(42,13,11,.58); }
 .tip-number { padding-top: 4px; color: #dfbd79; font-size: 7px; font-weight: 800; letter-spacing: .12em; }
 .tip-icon { font-size: 20px; line-height: 1; }
 .hero-tip-grid li div { min-width: 0; }
@@ -287,7 +286,7 @@ footer a { justify-self: end; }
   .topbar { grid-template-columns: 1fr auto; height: 70px; padding: 0 22px; }
   .trip-date { display: none; }
   .hero { grid-template-columns: 1fr; }
-  .hero-copy { padding: 76px 24px 66px; border-right: 0; }
+  .hero-copy { padding: 76px 24px 66px; border-right: 0; background-position: center, center; background-size: auto, cover; }
   h1 { font-size: clamp(58px, 15vw, 88px); }
   .tips-title { font-size: clamp(52px, 12vw, 76px); }
   .hero-tip-heading { flex-direction: row; align-items: flex-end; gap: 28px; }
