@@ -135,7 +135,24 @@ h1 em { color: var(--red); font-weight: 400; }
 .prep-list button.is-done { opacity: .62; }
 .prep-list button.is-done .prep-check { color: var(--ink); background: var(--gold); }
 .prep-list button.is-done b { text-decoration: line-through; }
-.prep-caption { margin: auto 0 0; padding-top: 42px; color: rgba(247,236,211,.5); font-size: 9px; line-height: 1.6; }
+.prep-apps { margin-top: 34px; }
+.prep-apps-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
+.prep-apps-heading h3 { margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 22px; font-weight: 500; }
+.prep-apps-heading span { color: var(--gold); font-size: 8px; font-weight: 800; letter-spacing: .14em; }
+.prep-app-list { border-top: 1px solid rgba(247,236,211,.25); }
+.prep-app-list details { border-bottom: 1px solid rgba(247,236,211,.2); }
+.prep-app-list summary { display: grid; grid-template-columns: minmax(0, 1fr) 24px; gap: 16px; align-items: center; padding: 13px 0; list-style: none; cursor: pointer; }
+.prep-app-list summary::-webkit-details-marker { display: none; }
+.prep-app-list summary > span:first-child { display: grid; grid-template-columns: minmax(90px, .55fr) minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.prep-app-list summary b { font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 500; }
+.prep-app-list summary small { color: rgba(247,236,211,.52); font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
+.app-expand { width: 22px; height: 22px; display: grid; place-items: center; border: 1px solid rgba(247,236,211,.3); border-radius: 50%; color: var(--gold); line-height: 1; transition: transform .2s ease; }
+.prep-app-list details[open] .app-expand { transform: rotate(45deg); }
+.prep-app-detail { padding: 0 34px 15px 0; }
+.prep-app-detail p { margin: 0; color: rgba(247,236,211,.68); font-size: 10px; line-height: 1.55; }
+.prep-app-detail a { display: inline-block; margin-top: 10px; color: var(--gold); font-size: 7px; font-weight: 800; letter-spacing: .12em; }
+.prep-app-detail a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.prep-caption { margin: auto 0 0; padding-top: 30px; color: rgba(247,236,211,.5); font-size: 9px; line-height: 1.6; }
 
 .trip-dashboard { display: grid; grid-template-columns: 1.8fr 1fr 1fr; padding: 0 5.5vw; border-bottom: 1px solid var(--line); background: rgba(247,236,211,.78); box-shadow: inset 0 1px 0 rgba(255,255,255,.35); }
 .progress-block { min-height: 124px; padding: 29px 42px 29px 0; display: grid; grid-template-columns: 1fr 50px; align-items: center; border-right: 1px solid var(--line); }

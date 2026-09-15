@@ -259,6 +259,35 @@ const beforeLeaving = [
   { id: "holafly-esim", category: "Connectivity", title: "Buy eSIM from Holafly" },
 ] as const;
 
+const appsToDownload = [
+  {
+    name: "LINE",
+    use: "Discounts",
+    detail: "Use LINE to find and save discount offers during the trip.",
+  },
+  {
+    name: "Holafly",
+    use: "eSIM data",
+    detail: "Use Holafly for mobile eSIM data while traveling in Japan.",
+  },
+  {
+    name: "Payke",
+    use: "Shopping help",
+    detail: "Use Payke for discounts and product information while shopping.",
+  },
+  {
+    name: "Tabelog",
+    use: "Restaurant reservations",
+    detail: "Use the English version to research restaurants and make reservations.",
+    url: "https://tabelog.onelink.me/IfVY/dzolmf88?af_ad=itsgracechin_july",
+  },
+  {
+    name: "Stamp Quest",
+    use: "Stamp locations",
+    detail: "Use Stamp Quest to locate collectible stamp spots during the trip.",
+  },
+] as const;
+
 const travelTips = [
   {
     icon: "🛂",
@@ -516,6 +545,31 @@ export default function Home() {
                 </button>
               );
             })}
+          </div>
+          <div className="prep-apps">
+            <div className="prep-apps-heading">
+              <h3>Apps to download</h3>
+              <span>{appsToDownload.length} APPS</span>
+            </div>
+            <div className="prep-app-list">
+              {appsToDownload.map((app) => (
+                <details key={app.name}>
+                  <summary>
+                    <span>
+                      <b>{app.name}</b>
+                      <small>{app.use}</small>
+                    </span>
+                    <span className="app-expand" aria-hidden="true">+</span>
+                  </summary>
+                  <div className="prep-app-detail">
+                    <p>{app.detail}</p>
+                    {"url" in app && (
+                      <a href={app.url} target="_blank" rel="noreferrer">OPEN ENGLISH RESERVATION LINK ↗</a>
+                    )}
+                  </div>
+                </details>
+              ))}
+            </div>
           </div>
           <p className="prep-caption">Check each item when it&apos;s ready. Your progress stays saved on this device.</p>
         </aside>
