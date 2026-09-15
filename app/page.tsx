@@ -440,16 +440,22 @@ export default function Home() {
         <button className="menu-close" onClick={closeMenu} aria-label="Close trip menu">×</button>
         <p className="eyebrow">TRIP INDEX</p>
         <nav>
-          <a href="#itinerary" onClick={closeMenu}><span>01</span> Itinerary</a>
-          <a href="#city-guide" onClick={closeMenu}><span>02</span> City guide</a>
-          <a href="#trains" onClick={closeMenu}><span>03</span> Train plan</a>
-          <a href="#bookings" onClick={closeMenu}><span>04</span> Booking board</a>
-          <a href="#notes" onClick={closeMenu}><span>05</span> Trip notes</a>
+          <a href="#travel-tips" onClick={closeMenu}><span>01</span> Travel tips</a>
+          <a href="#itinerary" onClick={closeMenu}><span>02</span> Itinerary</a>
+          <a href="#city-guide" onClick={closeMenu}><span>03</span> City guide</a>
+          <a href="#trains" onClick={closeMenu}><span>04</span> Train plan</a>
+          <a href="#bookings" onClick={closeMenu}><span>05</span> Booking board</a>
+          <a href="#notes" onClick={closeMenu}><span>06</span> Trip notes</a>
         </nav>
         <div className="menu-stamp"><span>11</span><small>DAYS IN<br />JAPAN</small></div>
       </aside>
 
-      <section className="hero" id="top">
+      <section className="welcome-hero" id="top" aria-label="Welcome to Nihon Notes Japan 2026">
+        <img src="./og-v4.png" alt="Nihon Notes Japan 2026 with cranes, cherry blossoms, Mount Fuji, and traditional Japanese architecture" />
+        <a className="welcome-enter" href="#travel-tips">EXPLORE THE TRIP <span>↓</span></a>
+      </section>
+
+      <section className="hero" id="travel-tips">
         <div className="hero-copy">
           <div className="hero-tip-heading">
             <div>
