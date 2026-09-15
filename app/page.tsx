@@ -255,13 +255,9 @@ const days: Day[] = [
   },
 ];
 
-const route = [
-  { city: "Tokyo", days: "Dec 9", tone: "coral" },
-  { city: "Kyoto", days: "Dec 10–13", tone: "sage" },
-  { city: "Osaka", days: "Dec 13–15", tone: "blue" },
-  { city: "Shibu Onsen", days: "Dec 15–17", tone: "gold" },
-  { city: "Tokyo", days: "Dec 17–19", tone: "coral" },
-];
+const beforeLeaving = [
+  { id: "holafly-esim", category: "Connectivity", title: "Buy eSIM from Holafly" },
+] as const;
 
 const travelTips = [
   {
@@ -380,14 +376,17 @@ const cityOptions: ("All" | City)[] = ["All", "Tokyo", "Shibu Onsen", "Kyoto", "
 export default function Home() {
   const [completed, setCompleted] = useState<number[]>([]);
   const [booked, setBooked] = useState<string[]>(["flight"]);
+  const [beforeLeavingDone, setBeforeLeavingDone] = useState<string[]>([]);
   const [filter, setFilter] = useState<"All" | City>("All");
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const savedDays = window.localStorage.getItem("nihon-completed-days");
     const savedBookings = window.localStorage.getItem("nihon-bookings");
+    const savedBeforeLeaving = window.localStorage.getItem("nihon-before-leaving");
     if (savedDays) setCompleted(JSON.parse(savedDays));
     if (savedBookings) setBooked(JSON.parse(savedBookings));
+    if (savedBeforeLeaving) setBeforeLeavingDone(JSON.parse(savedBeforeLeaving));
   }, []);
 
   const visibleDays = useMemo(
@@ -412,6 +411,14 @@ export default function Home() {
       : [...booked, id];
     setBooked(next);
     window.localStorage.setItem("nihon-bookings", JSON.stringify(next));
+  }
+
+  function toggleBeforeLeaving(id: string) {
+    const next = beforeLeavingDone.includes(id)
+      ? beforeLeavingDone.filter((itemId) => itemId !== id)
+      : [...beforeLeavingDone, id];
+    setBeforeLeavingDone(next);
+    window.localStorage.setItem("nihon-before-leaving", JSON.stringify(next));
   }
 
   function closeMenu() {
@@ -482,27 +489,35 @@ export default function Home() {
           </div>
         </div>
 
-        <aside className="route-card" aria-label="Trip route">
-          <div className="route-card-heading">
-            <span>THE ROUTE</span>
-            <span>11 DAYS</span>
+        <aside className="prep-card" aria-label="Things to do before leaving">
+          <div className="prep-card-heading">
+            <span>BEFORE YOU GO</span>
+            <span>{beforeLeaving.length} TASK{beforeLeaving.length === 1 ? "" : "S"}</span>
           </div>
-          <div className="route-list">
-            {route.map((stop, index) => (
-              <div className="route-stop" key={`${stop.city}-${stop.days}`}>
-                <div className="route-track">
-                  <span className={`route-dot ${stop.tone}`} />
-                  {index < route.length - 1 && <span className="route-stem" />}
-                </div>
-                <div>
-                  <p className="route-city">{stop.city}</p>
-                  <p className="route-days">{stop.days}</p>
-                </div>
-                <span className="route-number">0{index + 1}</span>
-              </div>
-            ))}
+          <div className="prep-intro">
+            <p>旅の準備</p>
+            <h2>Things to do<br /><em>before leaving.</em></h2>
           </div>
-          <p className="route-caption">東京 → 京都 → 大阪 → 渋温泉 → 東京</p>
+          <div className="prep-progress" aria-label={`${beforeLeavingDone.length} of ${beforeLeaving.length} tasks complete`}>
+            <div><span style={{ width: `${(beforeLeavingDone.length / beforeLeaving.length) * 100}%` }} /></div>
+            <b>{beforeLeavingDone.length}/{beforeLeaving.length} READY</b>
+          </div>
+          <div className="prep-list">
+            {beforeLeaving.map((item, index) => {
+              const isDone = beforeLeavingDone.includes(item.id);
+              return (
+                <button className={isDone ? "is-done" : ""} key={item.id} onClick={() => toggleBeforeLeaving(item.id)}>
+                  <span className="prep-check">{isDone ? "✓" : (index + 1).toString().padStart(2, "0")}</span>
+                  <span>
+                    <small>{item.category}</small>
+                    <b>{item.title}</b>
+                  </span>
+                  <em>{isDone ? "READY" : "TO DO"}</em>
+                </button>
+              );
+            })}
+          </div>
+          <p className="prep-caption">Check each item when it&apos;s ready. Your progress stays saved on this device.</p>
         </aside>
       </section>
 
