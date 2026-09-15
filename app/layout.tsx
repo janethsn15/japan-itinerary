@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const forwardedProtocol = requestHeaders.get("x-forwarded-proto")?.split(",")[0];
   const protocol = forwardedProtocol === "http" ? "http" : "https";
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
-  const imageUrl = `${protocol}://${host}/og-v3.png`;
+  const imageUrl = `${protocol}://${host}/og-v4.png`;
 
   return {
     title: "Nihon Notes · Japan 2026",
@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "Nihon Notes · Japan 2026",
       description: "Eleven days through Tokyo, Kyoto, Osaka, and Shibu Onsen—planned day by day.",
       type: "website",
-      images: [{ url: imageUrl, width: 1734, height: 907, alt: "Nihon Notes winter Japan route" }],
+      images: [{ url: imageUrl, width: 1734, height: 907, alt: "Nihon Notes Japan 2026 in a lacquer-red painted-screen style" }],
     },
     twitter: {
       card: "summary_large_image",
