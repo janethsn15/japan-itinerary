@@ -263,6 +263,39 @@ const route = [
   { city: "Tokyo", days: "Dec 17–19", tone: "coral" },
 ];
 
+const travelTips = [
+  {
+    icon: "🛂",
+    title: "Carry your passport",
+    detail: "You may need it for tax-free shopping and tourist discounts.",
+  },
+  {
+    icon: "🎟️",
+    title: "Ask for tourist coupons",
+    detail: "Check the mall’s Information Counter for special discounts.",
+  },
+  {
+    icon: "📱",
+    title: "Use apps for coupons",
+    detail: "Search travel and shopping apps for discounts before visiting.",
+  },
+  {
+    icon: "🚆",
+    title: "Avoid train rush hours",
+    detail: "Weekdays: 7:00–9:30 AM & 5:00–8:00 PM\nWeekends: 11:00 AM–12:30 PM & 5:00–9:00 PM",
+  },
+  {
+    icon: "🏨",
+    title: "Stay near Shinagawa Station",
+    detail: "Convenient airport access and easy connections to Tokyo and Osaka.",
+  },
+  {
+    icon: "🗻",
+    title: "Tokyo → Kyoto train",
+    detail: "Sit on the right side for a chance to see Mt. Fuji. Seats D/E in regular cars; Seat D in Green Car.",
+  },
+] as const;
+
 const trainLegs = [
   { from: "Tokyo", to: "Kyoto", date: "DEC 10", time: "~2H 10M", note: "Tōkaidō Shinkansen" },
   { from: "Kyoto", to: "Osaka", date: "DEC 13", time: "~30M", note: "JR special rapid" },
@@ -418,15 +451,25 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">YOUR JAPAN TRIP · 冬 2026</p>
-          <h1>
-            Eleven days.<br />
-            <em>One beautiful loop.</em>
-          </h1>
-          <p className="intro">
-            Tokyo lights, Kyoto temples, Osaka nights, and Shibu Onsen steam—
-            all in one easy-to-follow place.
-          </p>
+          <div className="hero-tip-heading">
+            <div>
+              <p className="eyebrow">KNOW BEFORE YOU GO · 旅のヒント</p>
+              <h1 className="tips-title">Travel <em>tips.</em></h1>
+            </div>
+            <p>Small details that can make your days in Japan smoother, easier, and more rewarding.</p>
+          </div>
+          <ul className="hero-tip-grid">
+            {travelTips.map((tip, index) => (
+              <li key={tip.title}>
+                <span className="tip-number">0{index + 1}</span>
+                <span className="tip-icon" aria-hidden="true">{tip.icon}</span>
+                <div>
+                  <b>{tip.title}</b>
+                  <p>{tip.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
           <div className="hero-actions">
             <a className="primary-action" href="#itinerary">VIEW ITINERARY <span>↓</span></a>
             <span className="arrival-note"><b>ARRIVAL</b> DEC 9 · 3:05 PM · HANEDA</span>
