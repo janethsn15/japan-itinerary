@@ -256,7 +256,25 @@ const days: Day[] = [
 ];
 
 const beforeLeaving = [
-  { id: "holafly-esim", category: "Connectivity", title: "Buy eSIM from Holafly" },
+  {
+    id: "visit-japan-web",
+    category: "Entry forms",
+    title: "Complete Visit Japan Web",
+    detail: "Fill in the immigration and customs declaration online, then take a screenshot of the QR code generated at the end.",
+    url: "https://www.vjw.digital.go.jp/",
+    linkLabel: "OPEN VISIT JAPAN WEB",
+  },
+  {
+    id: "holafly-esim",
+    category: "Connectivity",
+    title: "Buy eSIM from Holafly",
+  },
+  {
+    id: "download-apps",
+    category: "Phone setup",
+    title: "Download travel apps",
+    apps: ["LINE", "Payke", "Tabelog", "Stamp Quest"],
+  },
 ] as const;
 
 const appsToDownload = [
@@ -264,11 +282,6 @@ const appsToDownload = [
     name: "LINE",
     use: "Discounts",
     detail: "Use LINE to find and save discount offers during the trip.",
-  },
-  {
-    name: "Holafly",
-    use: "eSIM data",
-    detail: "Use Holafly for mobile eSIM data while traveling in Japan.",
   },
   {
     name: "Payke",
@@ -535,14 +548,29 @@ export default function Home() {
             {beforeLeaving.map((item, index) => {
               const isDone = beforeLeavingDone.includes(item.id);
               return (
-                <button className={isDone ? "is-done" : ""} key={item.id} onClick={() => toggleBeforeLeaving(item.id)}>
-                  <span className="prep-check">{isDone ? "✓" : (index + 1).toString().padStart(2, "0")}</span>
-                  <span>
-                    <small>{item.category}</small>
-                    <b>{item.title}</b>
-                  </span>
-                  <em>{isDone ? "READY" : "TO DO"}</em>
-                </button>
+                <article className={`prep-task ${isDone ? "is-done" : ""}`} key={item.id}>
+                  <button className="prep-task-toggle" onClick={() => toggleBeforeLeaving(item.id)}>
+                    <span className="prep-check">{isDone ? "✓" : (index + 1).toString().padStart(2, "0")}</span>
+                    <span>
+                      <small>{item.category}</small>
+                      <b>{item.title}</b>
+                    </span>
+                    <em>{isDone ? "READY" : "TO DO"}</em>
+                  </button>
+                  {("detail" in item || "apps" in item || "url" in item) && (
+                    <div className="prep-task-detail">
+                      {"detail" in item && <p>{item.detail}</p>}
+                      {"apps" in item && (
+                        <ul>
+                          {item.apps.map((app) => <li key={app}>{app}</li>)}
+                        </ul>
+                      )}
+                      {"url" in item && (
+                        <a href={item.url} target="_blank" rel="noreferrer">{item.linkLabel} ↗</a>
+                      )}
+                    </div>
+                  )}
+                </article>
               );
             })}
           </div>
