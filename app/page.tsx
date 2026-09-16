@@ -261,7 +261,7 @@ const beforeLeaving = [
     category: "Entry forms",
     title: "Complete Visit Japan Web",
     detail: "Fill in the immigration and customs declaration online, then take a screenshot of the QR code generated at the end.",
-    url: "https://www.vjw.digital.go.jp/",
+    url: "https://www.vjw.digital.go.jp/main/#/vjwplo001",
     linkLabel: "OPEN VISIT JAPAN WEB",
   },
   {
