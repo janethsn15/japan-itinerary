@@ -413,6 +413,7 @@ const kyotoFoodGroups = [
     category: "Sushi",
     places: [
       { name: "Sushi Ishimatsu", address: "36 Shishigatani Honenin Nishimachi, Sakyo Ward, Kyoto, 606-8427, Japan" },
+      { name: "Sushi Bar Sashisu", address: "Japan, 〒600-8216 Kyoto, Shimogyo Ward, Higashishiokojicho, 590-2 ヨドバシカメラマルチメディア京都 1F" },
     ],
   },
   {
