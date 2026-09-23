@@ -17,6 +17,18 @@ type Day = {
   transfer?: string;
 };
 
+type GuidePlace = {
+  name: string;
+  address: string;
+  distanceKm?: number;
+  categoryLabel?: string;
+};
+
+type GuideGroup = {
+  category: string;
+  places: readonly GuidePlace[];
+};
+
 const days: Day[] = [
   {
     id: 1,
@@ -445,7 +457,7 @@ const guideSections = [
 
 const kyotoToDoGroups = [
   {
-    category: "Day 11 · Higashiyama",
+    category: "Higashiyama temples & lanes",
     places: [
       { name: "Kiyomizu-dera", address: "1 Chome-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan" },
       { name: "Otowa Waterfall", address: "Kiyomizu-dera, 1 Chome-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan" },
@@ -457,7 +469,7 @@ const kyotoToDoGroups = [
     ],
   },
   {
-    category: "Day 12 · Southern Kyoto & Gion",
+    category: "Southern Kyoto & Gion",
     places: [
       { name: "Fushimi Inari Taisha", address: "68 Fukakusa Yabunouchicho, Fushimi Ward, Kyoto, 612-0882, Japan" },
       { name: "Komyo-in Temple", address: "15 Chome-809 Honmachi, Higashiyama Ward, Kyoto, 605-0981, Japan" },
@@ -513,6 +525,62 @@ const kyotoFoodGroups = [
   },
 ] as const;
 
+const kyotoPlaceCoordinates: Record<string, { lat: number; lng: number }> = {
+  "Kiyomizu-dera": { lat: 34.9949, lng: 135.7850 },
+  "Otowa Waterfall": { lat: 34.9948, lng: 135.7854 },
+  Sannenzaka: { lat: 34.9965, lng: 135.7813 },
+  Ninenzaka: { lat: 34.9983, lng: 135.7806 },
+  "Yasaka Pagoda": { lat: 34.9985, lng: 135.7799 },
+  "Chishakuin Temple": { lat: 34.9878, lng: 135.7759 },
+  "Fuga Kimono Rental": { lat: 34.9955, lng: 135.7830 },
+  "Fushimi Inari Taisha": { lat: 34.9671, lng: 135.7727 },
+  "Komyo-in Temple": { lat: 34.9740, lng: 135.7735 },
+  "Shirakawa Canal": { lat: 35.0062, lng: 135.7726 },
+  "Yasaka Shrine": { lat: 35.0037, lng: 135.7786 },
+  "Maruyama Park": { lat: 35.0035, lng: 135.7814 },
+  "Kodaiji Temple & Bamboo Grove": { lat: 35.0006, lng: 135.7807 },
+};
+
+const kyotoRestaurantCoordinates: Record<string, { lat: number; lng: number }> = {
+  "Kyoto Wamen Yukichi Honpo": { lat: 35.0057, lng: 135.7673 },
+  "Honke Daiichi Asahi Honten": { lat: 34.9872, lng: 135.7587 },
+  "Tentenyu — Ichijoji Main Shop": { lat: 35.0462, lng: 135.7858 },
+  "Hakata-Nagahama-Ramen Miyoshi": { lat: 35.0084, lng: 135.7711 },
+  "Sushi Ishimatsu": { lat: 35.0270, lng: 135.7920 },
+  "Sushi Bar Sashisu": { lat: 34.9882, lng: 135.7589 },
+  "Tendon Makino Kyoto Teramachi": { lat: 35.0067, lng: 135.7674 },
+  "Gion Tempura Koromo": { lat: 35.0030, lng: 135.7780 },
+  "Kichi Kichi Omurice": { lat: 35.0076, lng: 135.7707 },
+  "GYUKATSU Kyoto Katsugyu Sanjo-Kawaramachi": { lat: 35.0090, lng: 135.7690 },
+  "Hikiniku to Come (Kyoto)": { lat: 35.0050, lng: 135.7750 },
+  "Kyoto Kaiseki Yakiniku (BBQ) HIRO Gion Yamana-an": { lat: 35.0061, lng: 135.7723 },
+  "Beer Komachi": { lat: 35.0090, lng: 135.7794 },
+  "Chao Chao Gyoza — Sanjo Kiyamachi": { lat: 35.0084, lng: 135.7711 },
+  Rokujuan: { lat: 35.0072, lng: 135.7562 },
+  GOKAGO: { lat: 34.9965, lng: 135.7810 },
+};
+
+const kyotoToDoPlaces = kyotoToDoGroups.flatMap((group) => group.places);
+const allKyotoFood = kyotoFoodGroups.flatMap((group) =>
+  group.places.map((place) => ({ ...place, category: group.category })),
+);
+
+function distanceBetweenKm(
+  first: { lat: number; lng: number },
+  second: { lat: number; lng: number },
+) {
+  const toRadians = (degrees: number) => degrees * (Math.PI / 180);
+  const earthRadiusKm = 6371;
+  const latitudeDistance = toRadians(second.lat - first.lat);
+  const longitudeDistance = toRadians(second.lng - first.lng);
+  const firstLatitude = toRadians(first.lat);
+  const secondLatitude = toRadians(second.lat);
+  const haversine = Math.sin(latitudeDistance / 2) ** 2
+    + Math.cos(firstLatitude) * Math.cos(secondLatitude) * Math.sin(longitudeDistance / 2) ** 2;
+
+  return earthRadiusKm * 2 * Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine));
+}
+
 function googleMapsDirections(name: string, address: string) {
   return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${name}, ${address}`)}`;
 }
@@ -525,6 +593,7 @@ export default function Home() {
   const [beforeLeavingDone, setBeforeLeavingDone] = useState<string[]>([]);
   const [filter, setFilter] = useState<"All" | City>("All");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [nearbyKyotoPlace, setNearbyKyotoPlace] = useState("all");
 
   useEffect(() => {
     const savedDays = window.localStorage.getItem("nihon-completed-days");
@@ -539,6 +608,32 @@ export default function Home() {
     () => (filter === "All" ? days : days.filter((day) => day.city === filter)),
     [filter],
   );
+
+  const selectedKyotoPlace = nearbyKyotoPlace === "all"
+    ? null
+    : kyotoToDoPlaces.find((place) => place.name === nearbyKyotoPlace) ?? null;
+
+  const nearbyKyotoFoodGroups = useMemo<readonly GuideGroup[]>(() => {
+    if (nearbyKyotoPlace === "all") return kyotoFoodGroups;
+
+    const origin = kyotoPlaceCoordinates[nearbyKyotoPlace];
+    if (!origin) return kyotoFoodGroups;
+
+    const closestPlaces = allKyotoFood
+      .map((place) => {
+        const coordinates = kyotoRestaurantCoordinates[place.name];
+        return {
+          ...place,
+          categoryLabel: place.category,
+          distanceKm: coordinates ? distanceBetweenKm(origin, coordinates) : Number.POSITIVE_INFINITY,
+        };
+      })
+      .filter((place) => Number.isFinite(place.distanceKm))
+      .sort((first, second) => first.distanceKm - second.distanceKm)
+      .slice(0, 6);
+
+    return [{ category: `Closest to ${nearbyKyotoPlace}`, places: closestPlaces }];
+  }, [nearbyKyotoPlace]);
 
   const progress = Math.round((completed.length / days.length) * 100);
   const bookingProgress = Math.round((booked.length / initialBookings.length) * 100);
@@ -569,6 +664,13 @@ export default function Home() {
 
   function closeMenu() {
     setMenuOpen(false);
+  }
+
+  function showNearbyFood(placeName: string) {
+    setNearbyKyotoPlace(placeName);
+    window.requestAnimationFrame(() => {
+      document.getElementById("kyoto-eat-filter")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
   }
 
   return (
@@ -803,17 +905,47 @@ export default function Home() {
               </header>
               <div className="guide-columns">
                 {guideSections.map((section) => {
-                  const placeGroups = guide.city === "Kyoto" && section.title === "To do"
+                  const isKyotoToDo = guide.city === "Kyoto" && section.title === "To do";
+                  const isKyotoEat = guide.city === "Kyoto" && section.title === "To eat";
+                  const placeGroups: readonly GuideGroup[] | null = isKyotoToDo
                     ? kyotoToDoGroups
-                    : guide.city === "Kyoto" && section.title === "To eat"
-                      ? kyotoFoodGroups
+                    : isKyotoEat
+                      ? nearbyKyotoFoodGroups
                       : null;
 
                   return (
-                    <div className={`guide-bucket ${placeGroups ? "has-places" : ""}`} key={`${guide.city}-${section.title}`}>
+                    <div
+                      className={`guide-bucket ${placeGroups ? "has-places" : ""}`}
+                      id={isKyotoEat ? "kyoto-eat-filter" : undefined}
+                      key={`${guide.city}-${section.title}`}
+                    >
                       <span>{section.japanese}</span>
                       <h4>{section.title}</h4>
                       <p>{section.hint}</p>
+                      {isKyotoEat && (
+                        <div className="nearby-food-filter">
+                          <label htmlFor="nearby-kyoto-place">Find food near</label>
+                          <select
+                            id="nearby-kyoto-place"
+                            value={nearbyKyotoPlace}
+                            onChange={(event) => setNearbyKyotoPlace(event.target.value)}
+                          >
+                            <option value="all">All Kyoto food</option>
+                            {kyotoToDoGroups.map((group) => (
+                              <optgroup label={group.category} key={group.category}>
+                                {group.places.map((place) => (
+                                  <option value={place.name} key={place.name}>{place.name}</option>
+                                ))}
+                              </optgroup>
+                            ))}
+                          </select>
+                          <p>
+                            {selectedKyotoPlace
+                              ? `Showing the six closest saved places to eat near ${selectedKyotoPlace.name}.`
+                              : "Choose any Kyoto sight to see the nearest saved food spots."}
+                          </p>
+                        </div>
+                      )}
                       {placeGroups ? (
                         <div className="guide-place-groups">
                           {placeGroups.map((group) => (
@@ -826,6 +958,20 @@ export default function Home() {
                                       <b>{place.name}</b><span aria-hidden="true">↗</span>
                                     </a>
                                     <small>{place.address}</small>
+                                    {place.distanceKm !== undefined && (
+                                      <small className="place-distance">
+                                        ≈ {place.distanceKm.toFixed(1)} km away · {place.categoryLabel} · straight-line estimate
+                                      </small>
+                                    )}
+                                    {isKyotoToDo && (
+                                      <button
+                                        className={`nearby-food-button ${nearbyKyotoPlace === place.name ? "is-active" : ""}`}
+                                        type="button"
+                                        onClick={() => showNearbyFood(place.name)}
+                                      >
+                                        {nearbyKyotoPlace === place.name ? "SHOWING NEARBY FOOD" : "FIND FOOD NEARBY"}
+                                      </button>
+                                    )}
                                   </li>
                                 ))}
                               </ul>

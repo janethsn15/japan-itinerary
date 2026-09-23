@@ -257,6 +257,13 @@ h1 em { color: var(--red); font-weight: 400; }
 .guide-place-group a span { flex: 0 0 auto; color: var(--guide-accent); font-size: 11px; }
 .guide-place-group a:hover b { color: var(--guide-accent); text-decoration: underline; text-underline-offset: 3px; }
 .guide-place-group small { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; line-height: 1.45; overflow-wrap: anywhere; }
+.nearby-food-filter { margin-top: 20px; padding: 16px; border: 1px solid color-mix(in srgb, var(--guide-accent) 45%, var(--line)); background: color-mix(in srgb, var(--guide-accent) 8%, var(--paper)); scroll-margin-top: 110px; }
+.nearby-food-filter label { display: block; margin-bottom: 8px; color: var(--guide-accent); font-size: 8px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+.nearby-food-filter select { width: 100%; padding: 11px 34px 11px 11px; border: 1px solid var(--line); border-radius: 0; background: var(--paper); color: var(--ink); font: inherit; font-size: 11px; cursor: pointer; }
+.nearby-food-filter p { margin-top: 9px; font-size: 9px; }
+.nearby-food-button { margin-top: 9px; padding: 7px 9px; border: 1px solid var(--line); background: transparent; color: var(--guide-accent); font-size: 7px; font-weight: 900; letter-spacing: .12em; cursor: pointer; }
+.nearby-food-button:hover, .nearby-food-button:focus-visible, .nearby-food-button.is-active { border-color: var(--guide-accent); background: var(--guide-accent); color: var(--paper); }
+.guide-place-group small.place-distance { color: var(--guide-accent); font-weight: 800; }
 
 .trains-section { padding: 110px 6vw 105px; background: radial-gradient(circle at 12% 100%, rgba(173,137,74,.13), transparent 32%), linear-gradient(145deg, #1f342c, var(--ink)); color: var(--cream); }
 .trains-section .eyebrow { color: #dfbd79; }
