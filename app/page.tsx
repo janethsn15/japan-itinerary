@@ -93,8 +93,8 @@ const days: Day[] = [
     weekday: "THU",
     city: "Kyoto",
     japanese: "京都",
-    title: "Kyoto arrival & neighborhood night",
-    summary: "Arrive at your Higashiyama hotel at 3 PM, eat through Nishiki Market, then learn the streets around your stay.",
+    title: "Kyoto arrival & the Golden Pavilion",
+    summary: "Arrive at the Higashiyama hotel at 3 PM, head straight to Kinkaku-ji before closing, then explore the Nishiki Market area.",
     events: [
       { time: "08:30", title: "Check out in Shinjuku", note: "A comfortable start after the first-night bar crawl" },
       { time: "09:30", title: "Shinjuku to Shinagawa", note: "Use a local JR train and allow time to find the Shinkansen platforms" },
@@ -107,13 +107,27 @@ const days: Day[] = [
         linkLabel: "OPEN IN MAPS",
       },
       {
-        time: "15:30",
-        title: "Nishiki Market food stop",
-        note: "Try a late lunch and snacks; individual shops keep their own hours, so start here soon after check-in",
+        time: "15:15",
+        title: "Taxi to Kinkaku-ji",
+        note: "Leave immediately after dropping the bags; a taxi is the safest choice for reaching the temple before its 5 PM close",
+        url: "https://www.google.com/maps/dir/?api=1&origin=542-2+Furukawacho%2C+Higashiyama+Ward%2C+Kyoto%2C+605-0026%2C+Japan&destination=Kinkaku-ji%2C+1+Kinkakujicho%2C+Kita+Ward%2C+Kyoto%2C+603-8361%2C+Japan&travelmode=driving",
+        linkLabel: "DIRECTIONS",
+      },
+      {
+        time: "16:00",
+        title: "Kinkaku-ji · Golden Pavilion",
+        note: "Follow the garden route around the reflecting pond; the temple is open until 5 PM",
+        url: "https://www.shokoku-ji.jp/en/kinkakuji/access/",
+        linkLabel: "OFFICIAL VISITOR GUIDE",
+      },
+      {
+        time: "17:30",
+        title: "Nishiki Market area & dinner",
+        note: "Some market stalls may be closing, so browse what is still open, explore the neighboring arcades, and choose dinner nearby",
         url: "https://www.kyoto-nishiki.or.jp/",
         linkLabel: "NISHIKI MARKET",
       },
-      { time: "17:30", title: "Explore the hotel neighborhood", note: "Find the closest station, convenience store, breakfast spot, and a relaxed dinner nearby" },
+      { time: "20:00", title: "Return to the hotel neighborhood", note: "Find the closest station, convenience store, and breakfast spot before settling in" },
     ],
     stay: "Kyoto · Night 1",
     transfer: "Tokyo → Kyoto",
@@ -493,6 +507,12 @@ const guideSections = [
 
 const kyotoToDoGroups = [
   {
+    category: "Northern Kyoto",
+    places: [
+      { name: "Kinkaku-ji", address: "1 Kinkakujicho, Kita Ward, Kyoto, 603-8361, Japan" },
+    ],
+  },
+  {
     category: "Higashiyama temples & lanes",
     places: [
       { name: "Kiyomizu-dera", address: "1 Chome-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan" },
@@ -562,6 +582,7 @@ const kyotoFoodGroups = [
 ] as const;
 
 const kyotoPlaceCoordinates: Record<string, { lat: number; lng: number }> = {
+  "Kinkaku-ji": { lat: 35.0394, lng: 135.7292 },
   "Kiyomizu-dera": { lat: 34.9949, lng: 135.7850 },
   "Otowa Waterfall": { lat: 34.9948, lng: 135.7854 },
   Sannenzaka: { lat: 34.9965, lng: 135.7813 },
