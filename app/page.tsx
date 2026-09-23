@@ -158,10 +158,54 @@ const days: Day[] = [
     weekday: "SAT",
     city: "Kyoto",
     japanese: "京都",
-    title: "Kyoto day two · to be determined",
-    summary: "A second open Kyoto day for the places you decide matter most.",
+    title: "Torii gates, Zen gardens & Gion",
+    summary: "Start before the crowds at Fushimi Inari, pause at Komyo-in's garden, then follow Gion's canal to Yasaka, Maruyama Park, and Kodaiji's bamboo grove.",
     events: [
-      { time: "TBD", title: "Choose the day's Kyoto plan", note: "Keep this day flexible until the City Guide is filled in" },
+      { time: "06:30", title: "Leave the Kyoto hotel", note: "Have a quick breakfast and take the train toward Fushimi Inari" },
+      {
+        time: "07:15",
+        title: "Fushimi Inari Taisha",
+        note: "Walk through the Senbon Torii gates early, before the busiest part of the day",
+        url: "https://www.google.com/maps/search/?api=1&query=Fushimi+Inari+Taisha%2C+Kyoto%2C+Japan",
+        linkLabel: "OPEN IN MAPS",
+      },
+      {
+        time: "09:30",
+        title: "Komyo-in Temple",
+        note: "Slow down in the quiet moss and stone garden near Tofuku-ji",
+        url: "https://www.google.com/maps/search/?api=1&query=Komyo-in+Temple%2C+15+Chome-809+Honmachi%2C+Higashiyama+Ward%2C+Kyoto%2C+605-0981%2C+Japan",
+        linkLabel: "OPEN IN MAPS",
+      },
+      { time: "11:00", title: "Train to Gion + lunch", note: "Ride north toward Gion-Shijo and choose lunch near the canal" },
+      {
+        time: "12:30",
+        title: "Walk along Shirakawa Canal",
+        note: "Follow the willow-lined waterway and traditional streets of Gion Shirakawa",
+        url: "https://www.google.com/maps/search/?api=1&query=Shirakawa+Canal%2C+Gion%2C+Kyoto%2C+Japan",
+        linkLabel: "OPEN IN MAPS",
+      },
+      {
+        time: "13:30",
+        title: "Yasaka Shrine",
+        note: "Enter through the landmark west gate and explore the shrine grounds",
+        url: "https://www.google.com/maps/search/?api=1&query=Yasaka+Shrine%2C+Kyoto%2C+Japan",
+        linkLabel: "OPEN IN MAPS",
+      },
+      {
+        time: "14:15",
+        title: "Maruyama Park",
+        note: "Take a relaxed garden walk through the park directly behind Yasaka Shrine",
+        url: "https://www.google.com/maps/search/?api=1&query=Maruyama+Park%2C+Kyoto%2C+Japan",
+        linkLabel: "OPEN IN MAPS",
+      },
+      {
+        time: "15:15",
+        title: "Kodaiji Temple & bamboo grove",
+        note: "See the Zen gardens and finish along Kodaiji's intimate bamboo path before the 5 PM final admission",
+        url: "https://www.google.com/maps/search/?api=1&query=Kodaiji+Temple%2C+Kyoto%2C+Japan",
+        linkLabel: "OPEN IN MAPS",
+      },
+      { time: "17:30", title: "Dinner around Gion", note: "Choose from your Kyoto food list or return to a favorite Higashiyama lane" },
     ],
     stay: "Kyoto · Night 3",
   },
@@ -397,6 +441,20 @@ const guideSections = [
   { title: "To do", japanese: "見る", hint: "Sights, experiences, and neighborhoods" },
   { title: "To eat", japanese: "食べる", hint: "Restaurants, cafés, bars, and market bites" },
   { title: "To shop", japanese: "買う", hint: "Stores, markets, vintage, and souvenirs" },
+] as const;
+
+const kyotoToDoGroups = [
+  {
+    category: "Temples, shrines & scenic walks",
+    places: [
+      { name: "Fushimi Inari Taisha", address: "68 Fukakusa Yabunouchicho, Fushimi Ward, Kyoto, 612-0882, Japan" },
+      { name: "Komyo-in Temple", address: "15 Chome-809 Honmachi, Higashiyama Ward, Kyoto, 605-0981, Japan" },
+      { name: "Shirakawa Canal", address: "Gion Shirakawa, Higashiyama Ward, Kyoto, Japan" },
+      { name: "Yasaka Shrine", address: "625 Gionmachi Kitagawa, Higashiyama Ward, Kyoto, 605-0073, Japan" },
+      { name: "Maruyama Park", address: "Maruyamacho, Higashiyama Ward, Kyoto, 605-0071, Japan" },
+      { name: "Kodaiji Temple & Bamboo Grove", address: "526 Shimogawara-cho, Higashiyama Ward, Kyoto, 605-0825, Japan" },
+    ],
+  },
 ] as const;
 
 const kyotoFoodGroups = [
@@ -718,7 +776,7 @@ export default function Home() {
             <p className="eyebrow">CITY BY CITY · 街のリスト</p>
             <h2>Places for later</h2>
           </div>
-          <p>Kyoto&apos;s food list is ready. The remaining To Do, Eat, and Shop sections are waiting for your next upload.</p>
+          <p>Kyoto&apos;s sightseeing and food lists are taking shape. The remaining city guides are ready for your next additions.</p>
         </div>
 
         <div className="city-guide-list">
@@ -733,7 +791,11 @@ export default function Home() {
               </header>
               <div className="guide-columns">
                 {guideSections.map((section) => {
-                  const placeGroups = guide.city === "Kyoto" && section.title === "To eat" ? kyotoFoodGroups : null;
+                  const placeGroups = guide.city === "Kyoto" && section.title === "To do"
+                    ? kyotoToDoGroups
+                    : guide.city === "Kyoto" && section.title === "To eat"
+                      ? kyotoFoodGroups
+                      : null;
 
                   return (
                     <div className={`guide-bucket ${placeGroups ? "has-places" : ""}`} key={`${guide.city}-${section.title}`}>
