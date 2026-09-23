@@ -445,7 +445,19 @@ const guideSections = [
 
 const kyotoToDoGroups = [
   {
-    category: "Temples, shrines & scenic walks",
+    category: "Day 11 · Higashiyama",
+    places: [
+      { name: "Kiyomizu-dera", address: "1 Chome-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan" },
+      { name: "Otowa Waterfall", address: "Kiyomizu-dera, 1 Chome-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan" },
+      { name: "Sannenzaka", address: "3 Chome Kiyomizu, Higashiyama Ward, Kyoto, Japan" },
+      { name: "Ninenzaka", address: "Masuyacho, Higashiyama Ward, Kyoto, 605-0826, Japan" },
+      { name: "Yasaka Pagoda", address: "388 Yasakakamimachi, Higashiyama Ward, Kyoto, 605-0827, Japan" },
+      { name: "Chishakuin Temple", address: "964 Higashikawaracho, Higashiyama Ward, Kyoto, 605-0951, Japan" },
+      { name: "Fuga Kimono Rental", address: "Higashiyama Ward, Kyoto, Japan" },
+    ],
+  },
+  {
+    category: "Day 12 · Southern Kyoto & Gion",
     places: [
       { name: "Fushimi Inari Taisha", address: "68 Fukakusa Yabunouchicho, Fushimi Ward, Kyoto, 612-0882, Japan" },
       { name: "Komyo-in Temple", address: "15 Chome-809 Honmachi, Higashiyama Ward, Kyoto, 605-0981, Japan" },
