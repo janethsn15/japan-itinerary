@@ -573,6 +573,12 @@ const kyotoFoodGroups = [
     ],
   },
   {
+    category: "Sake & dining",
+    places: [
+      { name: "Fushimi Sake Village", address: "82-2 Hiranocho, Fushimi Ward, Kyoto, 612-8057, Japan" },
+    ],
+  },
+  {
     category: "Coffee & tea houses",
     places: [
       { name: "Rokujuan", address: "101 Nishirokkakucho, Nakagyo Ward, Kyoto, 604-8217, Japan" },
@@ -613,6 +619,7 @@ const kyotoRestaurantCoordinates: Record<string, { lat: number; lng: number }> =
   "Kyoto Kaiseki Yakiniku (BBQ) HIRO Gion Yamana-an": { lat: 35.0061, lng: 135.7723 },
   "Beer Komachi": { lat: 35.0090, lng: 135.7794 },
   "Chao Chao Gyoza — Sanjo Kiyamachi": { lat: 35.0084, lng: 135.7711 },
+  "Fushimi Sake Village": { lat: 34.9324, lng: 135.7608 },
   Rokujuan: { lat: 35.0072, lng: 135.7562 },
   GOKAGO: { lat: 34.9965, lng: 135.7810 },
 };
