@@ -256,6 +256,7 @@ h1 em { color: var(--red); font-weight: 400; }
 .guide-place-group a b { font-size: 11px; line-height: 1.35; }
 .guide-place-group a span { flex: 0 0 auto; color: var(--guide-accent); font-size: 11px; }
 .guide-place-group a:hover b { color: var(--guide-accent); text-decoration: underline; text-underline-offset: 3px; }
+.place-type { display: inline-block; margin-top: 7px; padding: 4px 7px 3px; border: 1px solid color-mix(in srgb, var(--guide-accent) 55%, var(--line)); color: var(--guide-accent); font-size: 7px; font-weight: 900; letter-spacing: .12em; line-height: 1; text-transform: uppercase; }
 .guide-place-group small { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; line-height: 1.45; overflow-wrap: anywhere; }
 .nearby-food-filter { margin-top: 20px; padding: 16px; border: 1px solid color-mix(in srgb, var(--guide-accent) 45%, var(--line)); background: color-mix(in srgb, var(--guide-accent) 8%, var(--paper)); scroll-margin-top: 110px; }
 .nearby-food-filter label { display: block; margin-bottom: 8px; color: var(--guide-accent); font-size: 8px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }

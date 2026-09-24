@@ -20,6 +20,7 @@ type Day = {
 type GuidePlace = {
   name: string;
   address: string;
+  placeType?: string;
   distanceKm?: number;
   categoryLabel?: string;
 };
@@ -509,30 +510,36 @@ const kyotoToDoGroups = [
   {
     category: "Northern Kyoto",
     places: [
-      { name: "Kinkaku-ji", address: "1 Kinkakujicho, Kita Ward, Kyoto, 603-8361, Japan" },
+      { name: "Kinkaku-ji", address: "1 Kinkakujicho, Kita Ward, Kyoto, 603-8361, Japan", placeType: "Temple" },
     ],
   },
   {
     category: "Higashiyama temples & lanes",
     places: [
-      { name: "Kiyomizu-dera", address: "1 Chome-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan" },
-      { name: "Otowa Waterfall", address: "Kiyomizu-dera, 1 Chome-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan" },
-      { name: "Sannenzaka", address: "3 Chome Kiyomizu, Higashiyama Ward, Kyoto, Japan" },
-      { name: "Ninenzaka", address: "Masuyacho, Higashiyama Ward, Kyoto, 605-0826, Japan" },
-      { name: "Yasaka Pagoda", address: "388 Yasakakamimachi, Higashiyama Ward, Kyoto, 605-0827, Japan" },
-      { name: "Chishakuin Temple", address: "964 Higashikawaracho, Higashiyama Ward, Kyoto, 605-0951, Japan" },
-      { name: "Fuga Kimono Rental", address: "Higashiyama Ward, Kyoto, Japan" },
+      { name: "Kiyomizu-dera", address: "1 Chome-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan", placeType: "Temple" },
+      { name: "Otowa Waterfall", address: "Kiyomizu-dera, 1 Chome-294 Kiyomizu, Higashiyama Ward, Kyoto, 605-0862, Japan", placeType: "Waterfall" },
+      { name: "Sannenzaka", address: "3 Chome Kiyomizu, Higashiyama Ward, Kyoto, Japan", placeType: "Historic street" },
+      { name: "Ninenzaka", address: "Masuyacho, Higashiyama Ward, Kyoto, 605-0826, Japan", placeType: "Historic street" },
+      { name: "Yasaka Pagoda", address: "388 Yasakakamimachi, Higashiyama Ward, Kyoto, 605-0827, Japan", placeType: "Pagoda" },
+      { name: "Chishakuin Temple", address: "964 Higashikawaracho, Higashiyama Ward, Kyoto, 605-0951, Japan", placeType: "Temple" },
+      { name: "Fuga Kimono Rental", address: "Higashiyama Ward, Kyoto, Japan", placeType: "Experience" },
+    ],
+  },
+  {
+    category: "Eastern Kyoto gardens",
+    places: [
+      { name: "Tenju-an", address: "86-8 Nanzenji Fukuchicho, Sakyo Ward, Kyoto, 606-8435, Japan", placeType: "Temple" },
     ],
   },
   {
     category: "Southern Kyoto & Gion",
     places: [
-      { name: "Fushimi Inari Taisha", address: "68 Fukakusa Yabunouchicho, Fushimi Ward, Kyoto, 612-0882, Japan" },
-      { name: "Komyo-in Temple", address: "15 Chome-809 Honmachi, Higashiyama Ward, Kyoto, 605-0981, Japan" },
-      { name: "Shirakawa Canal", address: "Gion Shirakawa, Higashiyama Ward, Kyoto, Japan" },
-      { name: "Yasaka Shrine", address: "625 Gionmachi Kitagawa, Higashiyama Ward, Kyoto, 605-0073, Japan" },
-      { name: "Maruyama Park", address: "Maruyamacho, Higashiyama Ward, Kyoto, 605-0071, Japan" },
-      { name: "Kodaiji Temple & Bamboo Grove", address: "526 Shimogawara-cho, Higashiyama Ward, Kyoto, 605-0825, Japan" },
+      { name: "Fushimi Inari Taisha", address: "68 Fukakusa Yabunouchicho, Fushimi Ward, Kyoto, 612-0882, Japan", placeType: "Shrine" },
+      { name: "Komyo-in Temple", address: "15 Chome-809 Honmachi, Higashiyama Ward, Kyoto, 605-0981, Japan", placeType: "Temple" },
+      { name: "Shirakawa Canal", address: "Gion Shirakawa, Higashiyama Ward, Kyoto, Japan", placeType: "Scenic walk" },
+      { name: "Yasaka Shrine", address: "625 Gionmachi Kitagawa, Higashiyama Ward, Kyoto, 605-0073, Japan", placeType: "Shrine" },
+      { name: "Maruyama Park", address: "Maruyamacho, Higashiyama Ward, Kyoto, 605-0071, Japan", placeType: "Park" },
+      { name: "Kodaiji Temple & Bamboo Grove", address: "526 Shimogawara-cho, Higashiyama Ward, Kyoto, 605-0825, Japan", placeType: "Temple" },
     ],
   },
 ] as const;
@@ -589,6 +596,7 @@ const kyotoFoodGroups = [
 
 const kyotoPlaceCoordinates: Record<string, { lat: number; lng: number }> = {
   "Kinkaku-ji": { lat: 35.0394, lng: 135.7292 },
+  "Tenju-an": { lat: 35.0111, lng: 135.7921 },
   "Kiyomizu-dera": { lat: 34.9949, lng: 135.7850 },
   "Otowa Waterfall": { lat: 34.9948, lng: 135.7854 },
   Sannenzaka: { lat: 34.9965, lng: 135.7813 },
@@ -1021,6 +1029,9 @@ export default function Home() {
                                     <a href={googleMapsDirections(place.name, place.address)} target="_blank" rel="noreferrer">
                                       <b>{place.name}</b><span aria-hidden="true">↗</span>
                                     </a>
+                                    {isKyotoToDo && place.placeType && (
+                                      <span className="place-type">{place.placeType}</span>
+                                    )}
                                     <small>{place.address}</small>
                                     {place.distanceKm !== undefined && (
                                       <small className="place-distance">
