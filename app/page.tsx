@@ -246,7 +246,13 @@ const days: Day[] = [
     summary: "Leave Kyoto, store the suitcases in Nara, meet the deer, visit Tōdai-ji and a traditional tea house, then continue to Osaka.",
     events: [
       { time: "07:30", title: "Check out in Kyoto", note: "Have an early breakfast and bring only a small day bag for Nara" },
-      { time: "08:15", title: "Train from Kyoto to Nara", note: "Take Kintetsu from Kyoto Station to Kintetsu-Nara · allow about 45–55 minutes" },
+      {
+        time: "08:15",
+        title: "Train from Kyoto to Kintetsu-Nara Station",
+        note: "Choose Kintetsu-Nara instead of JR Nara Station—it is closer to Nara Park and the deer area · allow about 45–55 minutes",
+        url: "https://www.google.com/maps/dir/?api=1&origin=Kyoto+Station%2C+Kyoto%2C+Japan&destination=Kintetsu-Nara+Station%2C+Nara%2C+Japan&travelmode=transit",
+        linkLabel: "TRAIN DIRECTIONS",
+      },
       {
         time: "09:15",
         title: "Store suitcases at Kintetsu-Nara Station",
