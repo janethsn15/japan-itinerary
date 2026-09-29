@@ -243,7 +243,7 @@ const days: Day[] = [
     city: "Osaka",
     japanese: "大阪",
     title: "Kyoto to Osaka via Nara",
-    summary: "Leave Kyoto, store the suitcases in Nara, meet the deer, visit Tōdai-ji and a traditional tea house, then continue to Osaka.",
+    summary: "Leave Kyoto, store the suitcases in Nara, meet the deer, visit Kasuga Taisha, Tōdai-ji, and a traditional tea house, then continue to Osaka.",
     events: [
       { time: "07:30", title: "Check out in Kyoto", note: "Have an early breakfast and bring only a small day bag for Nara" },
       {
@@ -268,21 +268,28 @@ const days: Day[] = [
         linkLabel: "OPEN IN MAPS",
       },
       {
-        time: "10:30",
+        time: "10:15",
+        title: "Kasuga Taisha Shrine",
+        note: "Walk through the lantern-lined approach and visit Nara's celebrated vermilion Shinto shrine",
+        url: "https://www.google.com/maps/search/?api=1&query=Kasuga+Taisha+Shrine%2C+Nara%2C+Japan",
+        linkLabel: "OPEN IN MAPS",
+      },
+      {
+        time: "11:15",
         title: "Tōdai-ji Temple",
         note: "Visit the Great Buddha Hall; winter hours are 8 AM–5 PM",
         url: "https://www.todaiji.or.jp/en/information/haikan/",
         linkLabel: "OFFICIAL VISITOR GUIDE",
       },
       {
-        time: "12:00",
+        time: "12:15",
         title: "Mizuyachaya tea-house break",
         note: "Stop at the traditional tea house near Nara Park for matcha, sweets, or a warm winter dish",
         url: "https://visitnara.jp/venues/D01057/",
         linkLabel: "TEA HOUSE DETAILS",
       },
       {
-        time: "13:15",
+        time: "13:00",
         title: "Lunch at Maguro Koya · confirm Sunday opening",
         note: "December 13 is a Sunday. The restaurant lists irregular closures, but recent directories show Sunday closed—verify close to the trip and keep a Higashimuki Shopping Street backup",
         url: "https://magurokoyanara.com/",
