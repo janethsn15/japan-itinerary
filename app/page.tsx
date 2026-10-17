@@ -139,8 +139,8 @@ const days: Day[] = [
     weekday: "FRI",
     city: "Kyoto",
     japanese: "京都",
-    title: "Kiyomizu-dera, Chishakuin & a kimono afternoon",
-    summary: "Wake up early for Kiyomizu-dera and Higashiyama, dress in a kimono, attend the noon geisha tea ceremony in Gion, and visit Chishakuin afterward.",
+    title: "Kiyomizu-dera, tea ceremony & Chishakuin",
+    summary: "Wake up early for Kiyomizu-dera and Higashiyama, enjoy the included kimono fitting and noon geisha tea ceremony in Gion, then visit Chishakuin.",
     events: [
       { time: "06:15", title: "Wake up early", note: "Have a light breakfast and dress warmly for a winter morning on foot" },
       {
@@ -159,13 +159,7 @@ const days: Day[] = [
       },
       { time: "08:30", title: "Drink from Otowa Waterfall", note: "Visit the waterfall below the main hall and take a respectful turn at the spring" },
       { time: "09:00", title: "Explore the Higashiyama lanes", note: "Wander through Sannenzaka, Ninenzaka, and the streets around Yasaka Pagoda" },
-      {
-        time: "10:00",
-        title: "Kimono fitting at Fuga Kimono Rental",
-        note: "Reserve an early fitting and confirm the shop's return time so you can wear the kimono to the ceremony",
-        url: "https://www.google.com/maps/search/?api=1&query=Fuga+Kimono+Rental+Kyoto",
-        linkLabel: "OPEN IN MAPS",
-      },
+      { time: "10:30", title: "Relax in Gion before the reservation", note: "Browse the neighborhood or stop for coffee, keeping the morning unhurried before check-in" },
       {
         time: "11:30",
         title: "Head to the tea ceremony venue",
@@ -175,8 +169,8 @@ const days: Day[] = [
       },
       {
         time: "12:00",
-        title: "Geisha tea ceremony",
-        note: "572-7 Minami-gawa, Gion-cho, Higashi-iri, Yamato-oji, Shijo-dori, Higashiyama-ku, Kyoto-shi, Kyoto, Japan",
+        title: "Geisha tea ceremony & included kimono fitting",
+        note: "The kimono fitting is included with the reservation · 572-7 Minami-gawa, Gion-cho, Higashi-iri, Yamato-oji, Shijo-dori, Higashiyama-ku, Kyoto-shi, Kyoto, Japan",
         url: "https://www.google.com/maps/search/?api=1&query=572-7+Minami-gawa%2C+Gion-cho%2C+Higashi-iri%2C+Yamato-oji%2C+Shijo-dori%2C+Higashiyama-ku%2C+Kyoto-shi%2C+Kyoto%2C+Japan",
         linkLabel: "OPEN IN MAPS",
       },
@@ -184,11 +178,11 @@ const days: Day[] = [
       {
         time: "14:30",
         title: "Chishakuin Temple",
-        note: "See the peaceful garden and celebrated painted screens, then allow enough time to return the kimono",
+        note: "See the peaceful garden and celebrated painted screens after the ceremony",
         url: "https://www.google.com/maps/search/?api=1&query=Chishakuin+Temple%2C+Kyoto%2C+Japan",
         linkLabel: "OPEN IN MAPS",
       },
-      { time: "15:45", title: "Final kimono stroll & return", note: "Take a few last photos in Higashiyama and return the kimono by the shop's confirmed deadline" },
+      { time: "15:45", title: "Return to the hotel neighborhood", note: "Take a relaxed Higashiyama stroll or rest after the early start" },
     ],
     stay: "Kyoto · Night 2",
   },
