@@ -140,7 +140,7 @@ const days: Day[] = [
     city: "Kyoto",
     japanese: "京都",
     title: "Kiyomizu-dera, tea ceremony & Chishakuin",
-    summary: "Wake up early for Kiyomizu-dera and Higashiyama, enjoy the included kimono fitting and noon geisha tea ceremony in Gion, then visit Chishakuin.",
+    summary: "Wake up early for Kiyomizu-dera and Higashiyama, enjoy the included kimono fitting and noon geisha tea ceremony, visit Chishakuin, then have dinner at UZU Kyoto.",
     events: [
       { time: "06:15", title: "Wake up early", note: "Have a light breakfast and dress warmly for a winter morning on foot" },
       {
@@ -183,6 +183,13 @@ const days: Day[] = [
         linkLabel: "OPEN IN MAPS",
       },
       { time: "15:45", title: "Return to the hotel neighborhood", note: "Take a relaxed Higashiyama stroll or rest after the early start" },
+      {
+        time: "TBD",
+        title: "Dinner at Vegan Ramen UZU Kyoto",
+        note: "Reservation time TBD · 146 Umenokicho, Nakagyo Ward, Kyoto, 604-0905, Japan · reservations are prioritized",
+        url: "https://www.tablecheck.com/en/uzu-vegan/reserve/landing",
+        linkLabel: "RESERVATION PAGE",
+      },
     ],
     stay: "Kyoto · Night 2",
   },
