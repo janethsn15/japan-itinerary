@@ -257,7 +257,7 @@ const days: Day[] = [
     city: "Osaka",
     japanese: "大阪",
     title: "Nara morning, Osaka after dark",
-    summary: "Leave Kyoto, explore Nara, check in at the Osaka hotel, shop around Minami, and end the night in neon-lit Shinsekai.",
+    summary: "Leave Kyoto, explore Nara, check in at Meander Osaka, shop around Minami, and end the night in neon-lit Shinsekai.",
     events: [
       { time: "07:30", title: "Check out in Kyoto", note: "Have an early breakfast and bring only a small day bag for Nara" },
       {
@@ -313,7 +313,7 @@ const days: Day[] = [
       { time: "15:00", title: "Train from Nara to Osaka", note: "Kintetsu-Nara → Osaka-Namba · about 40 minutes by rapid express" },
       {
         time: "16:00",
-        title: "Check in at the Osaka hotel",
+        title: "Check in at Meander Osaka",
         note: "1 Chome-5-16 Motomachi, Naniwa Ward, Osaka, 556-0016, Japan · drop the luggage and take a short break",
         url: "https://www.google.com/maps/search/?api=1&query=1+Chome-5-16+Motomachi%2C+Naniwa+Ward%2C+Osaka%2C+556-0016%2C+Japan",
         linkLabel: "OPEN IN MAPS",
@@ -346,9 +346,9 @@ const days: Day[] = [
         url: "https://www.google.com/maps/search/?api=1&query=Shinsekai%2C+Osaka%2C+Japan",
         linkLabel: "OPEN IN MAPS",
       },
-      { time: "22:30", title: "Return to the Osaka hotel", note: "Ride back to Motomachi and rest for the early Katsuo-ji start" },
+      { time: "22:30", title: "Return to Meander Osaka", note: "Ride back to Motomachi and rest for the early Katsuo-ji start" },
     ],
-    stay: "Osaka · Night 1",
+    stay: "Meander Osaka · Night 1",
     transfer: "Kyoto → Nara → Osaka",
   },
   {
@@ -360,7 +360,7 @@ const days: Day[] = [
     title: "Daruma morning & vintage Osaka",
     summary: "Catch a 7 AM train and taxi to Katsuo-ji for its 8 AM opening, then return downtown for vintage shopping in Amerikamura and Horie.",
     events: [
-      { time: "06:35", title: "Leave the hotel for Namba Station", note: "Walk from Motomachi and give yourselves enough time to reach the Midosuji Line platform before 7 AM" },
+      { time: "06:35", title: "Leave Meander Osaka for Namba Station", note: "Walk from Motomachi and give yourselves enough time to reach the Midosuji Line platform before 7 AM" },
       {
         time: "07:00",
         title: "Train to Minoh-Kayano Station",
@@ -412,7 +412,7 @@ const days: Day[] = [
       },
       { time: "18:00", title: "Unhurried downtown evening", note: "Stay around Namba and Shinsaibashi for dinner, people-watching, and anything you want to revisit" },
     ],
-    stay: "Osaka · Night 2",
+    stay: "Meander Osaka · Night 2",
   },
   {
     id: 7,
@@ -593,7 +593,7 @@ const initialBookings = [
   { id: "flight", label: "Flight to Tokyo", detail: "Delta 7 · LAX Dec 8 at 10:05 AM → HND Dec 9 at 3:05 PM", done: true },
   { id: "tokyo1", label: "Shinjuku hotel · stay 1", detail: "Dec 9–10 · 1 night · east side keeps nightlife walkable", done: false },
   { id: "kyoto", label: "Kyoto hotel", detail: "Dec 10–13 · 3 nights · 542-2 Furukawachō, Higashiyama Ward, Kyoto 605-0026", done: false },
-  { id: "osaka", label: "Osaka hotel", detail: "Dec 13–15 · 2 nights · 1 Chome-5-16 Motomachi, Naniwa Ward, Osaka 556-0016", done: false },
+  { id: "osaka", label: "Meander Osaka", detail: "Dec 13–15 · 2 nights · 1 Chome-5-16 Motomachi, Naniwa Ward, Osaka 556-0016", done: false },
   { id: "nagano", label: "Shibu Onsen ryokan", detail: "Dec 15–17 · 2 nights · choose an inn with nine-bath access", done: false },
   { id: "tokyo2", label: "Tokyo hotel · stay 2", detail: "Dec 17–19 · 2 nights", done: false },
   { id: "return-flight", label: "Flight home", detail: "Dec 19 · Tokyo → LAX · add airport and time", done: false },
