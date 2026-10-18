@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-type City = "Tokyo" | "Shibu Onsen" | "Kyoto" | "Osaka";
+type City = "Tokyo" | "Shibu Onsen" | "Nagano" | "Kyoto" | "Osaka";
 
 type Day = {
   id: number;
@@ -421,7 +421,7 @@ const days: Day[] = [
     city: "Shibu Onsen",
     japanese: "渋温泉",
     title: "From Osaka to onsen country",
-    summary: "Cross the mountains to a 1,300-year-old hot-spring town and check in at Kokuya Ryokan for two restorative nights.",
+    summary: "Cross the mountains to a 1,300-year-old hot-spring town and check in at Kokuya Ryokan for one restorative night.",
     events: [
       { time: "08:30", title: "Train toward Nagano", note: "Shin-Osaka → Nagoya → Nagano · allow about 4 hours" },
       { time: "13:00", title: "Nagano Dentetsu to Yudanaka", note: "Limited express · about 45 minutes" },
@@ -448,25 +448,36 @@ const days: Day[] = [
     id: 8,
     date: "16",
     weekday: "WED",
-    city: "Shibu Onsen",
-    japanese: "渋温泉",
-    title: "Snow monkeys & back to the ryokan",
-    summary: "Visit Jigokudani in the winter morning, then return to the ryokan for one more restorative onsen night.",
+    city: "Nagano",
+    japanese: "長野",
+    title: "Snow monkeys to Nagano City",
+    summary: "Check out of Kokuya at 10 AM, visit Jigokudani Snow Monkey Park, then continue to Nagano for the night.",
     events: [
-      { time: "08:15", title: "Bus toward Snow Monkey Park", note: "Use the winter access from the Kanbayashi side" },
-      { time: "09:00", title: "Forest walk to Jigokudani", note: "Allow 30–35 minutes each way and wear shoes with grip" },
+      { time: "08:00", title: "Breakfast & final onsen", note: "Pack before breakfast and enjoy one last bath at Kokuya" },
+      { time: "10:00", title: "Check out of Kokuya Ryokan", note: "Ask the ryokan to hold the suitcases while you visit the park; take only a small day bag" },
+      { time: "10:15", title: "Bus or taxi toward Snow Monkey Park", note: "Use the Kanbayashi entrance and confirm the winter timetable closer to the trip" },
+      { time: "10:45", title: "Forest walk to Jigokudani", note: "Allow 30–35 minutes each way and wear winter shoes with good grip" },
       {
-        time: "10:00",
+        time: "11:20",
         title: "Snow Monkey Park",
-        note: "Winter hours are generally 9 AM–4 PM; weather and the monkeys' movements can affect visits",
+        note: "Winter hours are generally 9 AM–4 PM; weather and the monkeys' movements can affect sightings",
         url: "https://en.jigokudani-yaenkoen.co.jp/",
         linkLabel: "OFFICIAL PARK SITE",
       },
-      { time: "13:00", title: "Return to Kokuya Ryokan", note: "Walk back to the bus stop, then return to Shibu Onsen" },
-      { time: "14:30", title: "Rest at Kokuya", note: "Warm up and leave the afternoon unhurried" },
-      { time: "16:30", title: "Nine-bath onsen trail", note: "Available to overnight guests until 10:00 PM" },
+      { time: "12:45", title: "Walk back & warm lunch", note: "Return to the trailhead and stop near Kanbayashi for lunch" },
+      { time: "14:15", title: "Return to Kokuya for the suitcases", note: "Collect every bag before leaving Shibu Onsen" },
+      {
+        time: "15:00",
+        title: "Travel to Nagano City",
+        note: "Bus or taxi to Yudanaka, then Nagano Dentetsu to Nagano Station · confirm the December timetable",
+        url: "https://www.nagaden-net.co.jp/snowmonkeyresorts",
+        linkLabel: "TRANSPORT INFORMATION",
+      },
+      { time: "16:30", title: "Check in at the Nagano hotel", note: "Hotel name and address TBD · stay near Nagano Station for an easy Tokyo departure" },
+      { time: "18:00", title: "Dinner near Nagano Station", note: "Keep the evening relaxed after the park and transfer" },
     ],
-    stay: "Kokuya Ryokan · Night 2",
+    stay: "Nagano City · Hotel TBD · Night 1",
+    transfer: "Shibu Onsen → Nagano",
   },
   {
     id: 9,
@@ -475,15 +486,15 @@ const days: Day[] = [
     city: "Tokyo",
     japanese: "東京",
     title: "Back to Tokyo, beautifully rested",
-    summary: "Leave the mountains after breakfast and begin the final Tokyo stay.",
+    summary: "Check out of the Nagano hotel, take the Shinkansen to Tokyo, and begin the final city stay.",
     events: [
-      { time: "09:00", title: "Check out of Kokuya · Yudanaka to Nagano", note: "Confirm the return shuttle or bus, then take Nagano Dentetsu" },
-      { time: "11:00", title: "Shinkansen to Tokyo", note: "Nagano → Tokyo · about 1 hr 25 min" },
-      { time: "14:00", title: "Check in + slow lunch" },
+      { time: "09:00", title: "Check out of the Nagano hotel", note: "Leave enough time to reach the Shinkansen platform without rushing" },
+      { time: "10:00", title: "Shinkansen to Tokyo", note: "Nagano → Tokyo · about 1 hr 25 min" },
+      { time: "12:00", title: "Drop bags + slow lunch", note: "Store the luggage if the Tokyo room is not ready yet" },
       { time: "17:00", title: "Daikanyama to Shibuya", note: "Coffee, shops, and a celebratory dinner" },
     ],
     stay: "Tokyo · Night 1 of 2",
-    transfer: "Shibu Onsen → Tokyo",
+    transfer: "Nagano → Tokyo",
   },
   {
     id: 10,
@@ -598,7 +609,8 @@ const trainLegs = [
   { from: "Tokyo", to: "Kyoto", date: "DEC 10", time: "~2H 10M", note: "Tōkaidō Shinkansen" },
   { from: "Kyoto", to: "Nara → Osaka", date: "DEC 13", time: "~1H 35M rail", note: "Kintetsu · sightseeing stop" },
   { from: "Osaka", to: "Shibu Onsen", date: "DEC 15", time: "~5H", note: "Via Nagoya + Nagano" },
-  { from: "Shibu Onsen", to: "Tokyo", date: "DEC 17", time: "~2H 20M", note: "Via Yudanaka + Nagano" },
+  { from: "Shibu Onsen", to: "Nagano", date: "DEC 16", time: "~1H 15M", note: "Via Yudanaka · confirm winter schedule" },
+  { from: "Nagano", to: "Tokyo", date: "DEC 17", time: "~1H 25M", note: "Hokuriku Shinkansen" },
 ];
 
 const initialBookings = [
@@ -606,7 +618,8 @@ const initialBookings = [
   { id: "tokyo1", label: "Shinjuku hotel · stay 1", detail: "Dec 9–10 · 1 night · east side keeps nightlife walkable", done: false },
   { id: "kyoto", label: "Kyoto hotel", detail: "Dec 10–13 · 3 nights · 542-2 Furukawachō, Higashiyama Ward, Kyoto 605-0026", done: false },
   { id: "osaka", label: "Meander Osaka", detail: "Dec 13–15 · 2 nights · 1 Chome-5-16 Motomachi, Naniwa Ward, Osaka 556-0016", done: false },
-  { id: "nagano", label: "Kokuya Ryokan", detail: "Dec 15–17 · 2 nights · 2200 Hirao, Yamanouchi, Shimotakai District, Nagano 381-0401", done: false },
+  { id: "nagano", label: "Kokuya Ryokan", detail: "Dec 15–16 · 1 night · 2200 Hirao, Yamanouchi, Shimotakai District, Nagano 381-0401", done: false },
+  { id: "nagano-city", label: "Nagano City hotel", detail: "Dec 16–17 · 1 night · hotel and address TBD", done: false },
   { id: "tokyo2", label: "Tokyo hotel · stay 2", detail: "Dec 17–19 · 2 nights", done: false },
   { id: "return-flight", label: "Flight home", detail: "Dec 19 · Tokyo → LAX · add airport and time", done: false },
   { id: "trains", label: "Intercity trains", detail: "Reserve seats once travel times are set", done: false },
@@ -617,7 +630,8 @@ const cityGuides = [
   { city: "Tokyo", japanese: "東京", dates: "DEC 9 · 17–19", tone: "coral" },
   { city: "Kyoto", japanese: "京都", dates: "DEC 10–13", tone: "sage" },
   { city: "Osaka", japanese: "大阪", dates: "DEC 13–15", tone: "blue" },
-  { city: "Shibu Onsen", japanese: "渋温泉", dates: "DEC 15–17", tone: "gold" },
+  { city: "Shibu Onsen", japanese: "渋温泉", dates: "DEC 15–16", tone: "gold" },
+  { city: "Nagano", japanese: "長野", dates: "DEC 16–17", tone: "plum" },
 ] as const;
 
 const guideSections = [
@@ -777,7 +791,7 @@ function googleMapsDirections(name: string, address: string) {
   return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${name}, ${address}`)}`;
 }
 
-const cityOptions: ("All" | City)[] = ["All", "Tokyo", "Shibu Onsen", "Kyoto", "Osaka"];
+const cityOptions: ("All" | City)[] = ["All", "Tokyo", "Kyoto", "Osaka", "Shibu Onsen", "Nagano"];
 
 export default function Home() {
   const [completed, setCompleted] = useState<number[]>([]);
@@ -1013,7 +1027,7 @@ export default function Home() {
           <strong>{progress}%</strong>
         </div>
         <div className="quick-fact"><span>次</span><div><small>NEXT UP</small><b>Haneda → Shinjuku · 3:05 PM</b></div></div>
-        <div className="quick-fact"><span>宿</span><div><small>NIGHTS</small><b>10 nights · 5 stays</b></div></div>
+        <div className="quick-fact"><span>宿</span><div><small>NIGHTS</small><b>10 nights · 6 stays</b></div></div>
       </section>
 
       <section className="itinerary-section" id="itinerary">
@@ -1191,7 +1205,7 @@ export default function Home() {
             <p className="eyebrow">MOVE WITH EASE · 鉄道</p>
             <h2>The rail plan</h2>
           </div>
-          <p>Four simple travel legs connect the whole loop.</p>
+          <p>Five simple travel legs connect the whole loop.</p>
         </div>
         <div className="train-grid">
           {trainLegs.map((leg, index) => (
@@ -1247,7 +1261,7 @@ export default function Home() {
 
       <footer>
         <div className="footer-mark"><span /> NIHON NOTES</div>
-        <p>DECEMBER 09—19 · TOKYO, SHIBU ONSEN, KYOTO & OSAKA</p>
+        <p>DECEMBER 09—19 · TOKYO, KYOTO, OSAKA, SHIBU ONSEN & NAGANO</p>
         <a href="#top">BACK TO TOP ↑</a>
       </footer>
     </main>

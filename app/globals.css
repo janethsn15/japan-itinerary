@@ -190,6 +190,7 @@ h1 em { color: var(--red); font-weight: 400; }
 .day-card.city-kyoto { border-left-color: var(--sage); }
 .day-card.city-osaka { border-left-color: var(--blue); }
 .day-card.city-shibu-onsen { border-left-color: var(--gold); }
+.day-card.city-nagano { border-left-color: var(--blossom); }
 .day-card.is-complete .day-details summary h3, .day-card.is-complete .day-details summary > p { text-decoration: line-through; text-decoration-thickness: 1px; opacity: .55; }
 .day-check { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--ink); border-radius: 50%; background: transparent; cursor: pointer; transition: .2s ease; }
 .day-check span { font-size: 10px; letter-spacing: .05em; }
@@ -202,6 +203,7 @@ h1 em { color: var(--red); font-weight: 400; }
 .city-tag { font-size: 9px; font-weight: 800; letter-spacing: .18em; }
 .city-tokyo .city-tag { color: var(--red); }
 .city-shibu-onsen .city-tag { color: #a57319; }
+.city-nagano .city-tag { color: #a55047; }
 .city-kyoto .city-tag { color: #587552; }
 .city-osaka .city-tag { color: #357184; }
 .day-details h3 { margin: 7px 0 7px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(23px, 2.3vw, 33px); font-weight: 500; letter-spacing: -.025em; }
@@ -233,6 +235,7 @@ h1 em { color: var(--red); font-weight: 400; }
 .guide-sage { --guide-accent: var(--sage); }
 .guide-blue { --guide-accent: var(--blue); }
 .guide-gold { --guide-accent: var(--gold); }
+.guide-plum { --guide-accent: var(--blossom); }
 .guide-city > header { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; padding: 30px; border-right: 1px solid var(--line); }
 .guide-city > header > span { color: var(--guide-accent); font-family: Georgia, 'Times New Roman', serif; font-size: 13px; }
 .guide-city > header p { margin: 0 0 12px; color: var(--muted); font-size: 8px; font-weight: 800; letter-spacing: .16em; }
@@ -269,7 +272,7 @@ h1 em { color: var(--red); font-weight: 400; }
 .trains-section { padding: 110px 6vw 105px; background: radial-gradient(circle at 12% 100%, rgba(173,137,74,.13), transparent 32%), linear-gradient(145deg, #1f342c, var(--ink)); color: var(--cream); }
 .trains-section .eyebrow { color: #dfbd79; }
 .section-heading.light > p { color: rgba(244,240,231,.6); }
-.train-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(244,240,231,.35); border-left: 1px solid rgba(244,240,231,.35); }
+.train-grid { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid rgba(244,240,231,.35); border-left: 1px solid rgba(244,240,231,.35); }
 .train-card { min-height: 300px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(244,240,231,.35); border-bottom: 1px solid rgba(244,240,231,.35); }
 .train-card-top, .train-card-bottom { display: flex; justify-content: space-between; gap: 15px; font-size: 8px; letter-spacing: .15em; }
 .train-card-top span:last-child { color: rgba(244,240,231,.4); }
