@@ -38,7 +38,7 @@ const days: Day[] = [
     city: "Tokyo",
     japanese: "東京",
     title: "Haneda to Shinjuku after dark",
-    summary: "Check in, shop Isetan, dress for the night, then follow Shinjuku's neon from Godzilla Head to Golden Gai.",
+    summary: "Check in, shop Isetan, stop at Bic Camera for a mini camera, then follow Shinjuku's neon from Godzilla Head to Golden Gai.",
     events: [
       { time: "15:05", title: "Delta 7 arrives at Haneda", note: "From Los Angeles · allow 60–90 minutes for immigration and bags" },
       {
@@ -56,7 +56,14 @@ const days: Day[] = [
         url: "https://cp.mistore.jp/global/en/shinjuku.html",
         linkLabel: "ISETAN DETAILS",
       },
-      { time: "20:00", title: "Back to the hotel to get ready", note: "Freshen up, change, and have a quick rest before the late night" },
+      {
+        time: "19:20",
+        title: "Bic Camera Shinjuku East",
+        note: "Shop for a mini camera at 3-29-1 Shinjuku, a short walk from Isetan · bring your passport for eligible tax-free shopping",
+        url: "https://www.biccamera.com/bc/i/shop/shoplist/shop116.jsp",
+        linkLabel: "STORE DETAILS",
+      },
+      { time: "20:15", title: "Back to the hotel to get ready", note: "Freshen up, change, and have a quick rest before the late night" },
       {
         time: "21:15",
         title: "Godzilla Head from Godzilla Road",
