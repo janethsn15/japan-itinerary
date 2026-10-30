@@ -750,6 +750,18 @@ const kyotoFoodGroups = [
   },
 ] as const;
 
+const osakaFoodGroups = [
+  {
+    category: "Izakaya & standing bars",
+    places: [
+      {
+        name: "Stand Wakewake · Uranamba",
+        address: "2 Chome-1-9 Sennichimae, Chuo Ward, Osaka, 542-0074, Japan",
+      },
+    ],
+  },
+] as const;
+
 const kyotoPlaceCoordinates: Record<string, { lat: number; lng: number }> = {
   "Kinkaku-ji": { lat: 35.0394, lng: 135.7292 },
   "Tenju-an": { lat: 35.0111, lng: 135.7921 },
@@ -1118,7 +1130,7 @@ export default function Home() {
             <p className="eyebrow">CITY BY CITY · 街のリスト</p>
             <h2>Places for later</h2>
           </div>
-          <p>Kyoto&apos;s sightseeing and food lists are taking shape. The remaining city guides are ready for your next additions.</p>
+          <p>Kyoto&apos;s sightseeing and food lists are taking shape, and Osaka&apos;s food guide has begun. The remaining city guides are ready for your next additions.</p>
         </div>
 
         <div className="city-guide-list">
@@ -1135,11 +1147,14 @@ export default function Home() {
                 {guideSections.map((section) => {
                   const isKyotoToDo = guide.city === "Kyoto" && section.title === "To do";
                   const isKyotoEat = guide.city === "Kyoto" && section.title === "To eat";
+                  const isOsakaEat = guide.city === "Osaka" && section.title === "To eat";
                   const placeGroups: readonly GuideGroup[] | null = isKyotoToDo
                     ? kyotoToDoGroups
                     : isKyotoEat
                       ? nearbyKyotoFoodGroups
-                      : null;
+                      : isOsakaEat
+                        ? osakaFoodGroups
+                        : null;
 
                   return (
                     <div
